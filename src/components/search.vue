@@ -43,6 +43,8 @@ export default {
 <style scoped>
 #search{
     width: 100%;
+    height: 60px;
+    box-sizing: border-box;
 }
 .search_bkg {
   background: #000;

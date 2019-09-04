@@ -1,7 +1,6 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
     touch-action: none;
     font-size: 12px;
     text-decoration: none
@@ -30,7 +29,7 @@ ul, li {
     margin: 0;
 }
 
-.container {
+.layout {
     margin: 60px 0;
 }
 
@@ -54,6 +53,7 @@ ul, li {
     top: 0;
     left: 0;
     z-index: 999;
+    display: block;
 }
 
 .shopClass li {
@@ -79,4 +79,76 @@ ul, li {
 
 .banenr {
     padding: 15px 0;
+}
+
+#foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: #000;
+    padding: 0;
+    z-index: 999;
+}
+
+#foot a {
+    display: block;
+    width: 20%;
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+#foot a i {
+    font-size: 20px;
+}
+
+#foot a.active {
+    color: #ffc105
+}
+
+.listshop {
+    padding: 0 15px;
+    padding-bottom: 15px;
+}
+
+.shop {
+    box-sizing: border-box;
+}
+
+.shop a {
+    display: block;
+    color: #000;
+}
+
+.shop a h6 {
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shop a h4 {
+    color: #d10216;
+    font-size: 16px;
+}
+
+.shopTitle {
+    font-size: 16px;
+    line-height: 30px;
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.shopTitle>a {
+    color: #000;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 30px;
+    font-size: 14px;
 }
