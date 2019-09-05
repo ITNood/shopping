@@ -11,6 +11,20 @@ export default new Router({
       component: () => {
         return import('../views/home')
       }
+    },
+    {
+      path: '/car',
+      name: 'car',
+      component: () => {
+        return import('../views/car')
+      }
+    },
+    {
+      path: '/discount',
+      name: 'discount',
+      component: () => {
+        return import('../views/discount')
+      }
     }
   ]
 })
