@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-header id="top"></el-header>
+      <el-backtop
+        target=".layout"
+        :right="20"
+        :bottom="80"
+        :visibility-height="100"
+      ></el-backtop>
   </div>
 </template>
 

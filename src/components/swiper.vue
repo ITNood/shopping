@@ -2,9 +2,7 @@
   <div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="../assets/image/banner.jpg"></div>
-        <div class="swiper-slide"><img src="../assets/image/banner.jpg"></div>
-        <div class="swiper-slide"><img src="../assets/image/banner.jpg"></div>
+        <div class="swiper-slide" v-for="(img,index) in banner" :key="index"><img :src="img.src"></div>
       </div>
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
@@ -16,8 +14,11 @@
 <script>
 import Swiper from "swiper";
 export default {
+  name:'Swiper',
+  props:{banner:Array},
   data() {
-    return {};
+    return {
+    };
   },
   mounted() {
     var swiper = new Swiper(".swiper-container", {

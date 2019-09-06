@@ -5,7 +5,7 @@
       :isFixed="fixed"
     />
     <div class="layout">
-      <Swiper />
+      <Swiper :banner="bannerList" />
       <!--分类菜单-->
       <Mune />
       <!--banenr-->
@@ -38,7 +38,7 @@
             v-for="(time,index) in list.times"
             :key="index"
           >
-            <router-link :to="time.url">
+            <router-link :to="{path:'/details',query:{id:time.id}}">
               <img :src="time.img">
               <h6>{{time.title}}</h6>
               <h4>￥{{time.price}}</h4>
@@ -63,6 +63,11 @@ export default {
     return {
       isTrue: true,
       fixed: true,
+      bannerList:[
+        {src:require('../assets/image/banner.jpg')},
+        {src:require('../assets/image/banner.jpg')},
+        {src:require('../assets/image/banner.jpg')}
+      ],
       todos: [
         { img: require("../assets/image/list_banner1.jpg"), url: "" },
         { img: require("../assets/image/list_banner2.jpg"), url: "" }
@@ -77,19 +82,22 @@ export default {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             }
           ]
         },
@@ -102,7 +110,8 @@ export default {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             },
             {
               url: "",
@@ -114,7 +123,8 @@ export default {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             }
           ]
         },
@@ -127,19 +137,22 @@ export default {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
-              price: "8000.00"
+              price: "8000.00",
+              id:1
             }
           ]
         }

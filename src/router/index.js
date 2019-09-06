@@ -60,6 +60,13 @@ export default new Router({
       component: () => {
         return import('../views/my')
       }
+    },
+    {
+      path: '/details',
+      name: 'details',
+      component: () => {
+        return import('../views/details')
+      }
     }
   ]
 })
