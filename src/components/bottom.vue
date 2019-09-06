@@ -25,4 +25,32 @@ export default {
 </script>
 
 <style scoped>
+
+#foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: #000;
+    padding: 0;
+    z-index: 999;
+}
+
+#foot a {
+    display: block;
+    width: 20%;
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+#foot a i {
+    font-size: 20px;
+}
+
+#foot a.router-link-exact-active {
+    color: #ffc105
+}
 </style>

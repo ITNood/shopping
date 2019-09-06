@@ -25,6 +25,41 @@ export default new Router({
       component: () => {
         return import('../views/discount')
       }
+    },
+    {
+      path: '/coupon',
+      name: 'coupon',
+      component: () => {
+        return import('../views/coupon')
+      }
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: () => {
+        return import('../views/news')
+      }
+    },
+    {
+      path: '/supply',
+      name: 'supply',
+      component: () => {
+        return import('../views/supply')
+      }
+    },
+    {
+      path: '/telphone',
+      name: 'telphone',
+      component: () => {
+        return import('../views/telphone')
+      }
+    },
+    {
+      path: '/my',
+      name: 'my',
+      component: () => {
+        return import('../views/my')
+      }
     }
   ]
 })

@@ -90,33 +90,6 @@ ul, li {
     padding: 15px 0;
 }
 
-#foot {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    background-color: #000;
-    padding: 0;
-    z-index: 999;
-}
-
-#foot a {
-    display: block;
-    width: 20%;
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 16px;
-}
-
-#foot a i {
-    font-size: 20px;
-}
-
-#foot a.active {
-    color: #ffc105
-}
 
 .listshop {
     padding: 0 15px;
@@ -413,6 +386,120 @@ ul, li {
     line-height: 25px;
 }
 
+#coupon {
+    position: relative;
+}
+
+#coupon .el-tabs__nav-wrap::after {
+    background-color: transparent;
+}
+
+#coupon .el-tabs__header {
+    padding: 0 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f6f6f6;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#coupon .el-tabs__item {
+    width: 50%;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+#coupon .el-tabs__nav {
+    width: 100%;
+}
+
+#coupon .el-tabs__content {
+    padding: 64px 20px 20px;
+}
+
+#coupon .el-tabs__item.is-active {
+    color: #000;
+}
+
+#coupon .el-tabs__active-bar {
+    background-color: #ffc105;
+}
+
+.couponlist {
+    overflow: hidden;
+}
+
+.couponlist>ul {
+    height: calc(100vh - 144px);
+    overflow-y: auto;
+}
+
+.couponlist>ul>li {
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.couponLeft {
+    background-color: #ffc105;
+    width: 60%;
+    border-right: 1px dashed white;
+    padding: 15px;
+}
+
+.couponLeft>h5 {
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.couponLeft>p {
+    font-size: 14px;
+}
+
+.couponLeft>p>span {
+    font-size: 30px;
+    margin-right: 10px;
+    font-weight: 600
+}
+
+.couponRight {
+    padding: 15px;
+    width: 40%;
+}
+
+.couponRight>.get {
+    border: none;
+    color: #ffc105;
+    margin: 0 auto;
+    display: block;
+}
+
+.couponRight>.get>span {
+    font-size: 16px;
+}
+
+.couponRight>a {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    width: 100%;
+    text-align: center;
+    line-height:40px;
+    font-weight: 600;
+}
+.couponRight>a.color{
+    color: #ffc105;
+}
+
+.couponRight>p{
+    text-align: center;
+    color: #666;
+}
 /*-----------------------*/
 
 @media screen and (min-height:667px) and (max-height:736px) {
