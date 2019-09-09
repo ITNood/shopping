@@ -81,6 +81,20 @@ export default new Router({
       component: () => {
         return import('../views/addEdit')
       }
+    },
+    {
+      path: '/subOrder',
+      name: 'subOrder',
+      component: () => {
+        return import('../views/subOrder')
+      }
+    },
+    {
+      path: '/payment',
+      name: 'payment',
+      component: () => {
+        return import('../views/payment')
+      }
     }
   ]
 })

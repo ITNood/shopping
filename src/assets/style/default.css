@@ -817,6 +817,10 @@ ul, li {
     padding: 10px 0;
 }
 
+.address>i {
+    font-size: 18px;
+}
+
 .handle {
     margin-top: 10px;
     display: flex;
@@ -886,21 +890,146 @@ ul, li {
     color: #000;
     display: block;
     width: 100%;
-    border:none;
+    border: none;
 }
 
 .submit span {
     font-size: 16px;
 }
 
-.submit:hover,.submit:focus{
+.submit:hover, .submit:focus {
     color: #000;
-    background-color:#ffc105;
+    background-color: #ffc105;
+}
+
+.noAddress a {
+    color: #000;
+    line-height: 50px;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+}
+
+.noAddress a>i {
+    font-size: 18px;
+}
+
+.shopTotal {
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+.orderText {
+    margin-top: 10px;
+}
+
+.orderText>li {
+    padding: 0 20px;
+    background-color: white;
+    line-height: 40px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.orderText>li>span {
+    font-size: 14px;
+    float: right
+}
+
+.handleOrder {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: block;
+}
+
+.removeOrder, .subOrder {
+    background-color: #555;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.removeOrder>span, .subOrder>span {
+    font-size: 16px;
+}
+
+.subOrder {
+    background-color: #ffc105;
+    color: #000;
+}
+
+.couponDrawer .el-drawer__body {
+    padding: 0 20px !important;
+}
+
+.coupons {
+    height: calc(100vh - 220px)
+}
+
+.selectPay {
+    background-color: white;
+    padding: 20px;
+}
+
+.selectPay>ul>li {
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px;
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+}
+
+.selectPay>ul>li:last-child {
+    border: none;
+}
+
+.selectPay>ul>li>span {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin-right: 8px;
+}
+
+.selectPay>ul>li span.sum {
+    background-image: url('../image/money.png');
+    background-size: cover;
+}
+
+.selectPay>ul>li>span.wechat {
+    background-image: url('../image/wechat.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.selectPay>ul>li .el-radio__label {
+    display: none;
+}
+
+.selectPay>ul>li .el-radio{
+    position: absolute;
+    right: 10px;
 }
 /*-----------------------*/
 
 @media screen and (min-height:667px) and (max-height:736px) {
     .discountList ul {
         height: calc(100vh - 305px);
+    }
+}
+
+@media (min-height:668px) {
+    .couponlist>ul.coupons, .coupons {
+        height: calc(100vh - 250px)
+    }
+}
+
+@media (min-height:737px) {
+    .couponlist>ul.coupons, .coupons {
+        height: calc(100vh - 250px)
     }
 }

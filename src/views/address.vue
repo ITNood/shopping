@@ -7,7 +7,7 @@
           <div class="username">收货人：{{username}}</div>
           <div class="mobile">{{mobile}}</div>
         </div>
-        <div class="address">{{address}}</div>
+        <div class="address"><i class="el-icon-location"></i>{{address}}</div>
         <div class="handle">
           <el-radio
             v-model="selected"
@@ -36,7 +36,7 @@
             <div class="username">收货人：{{username}}</div>
             <div class="mobile">{{mobile}}</div>
           </div>
-          <div class="address">{{address}}</div>
+          <div class="address"><i class="el-icon-location"></i>{{address}}</div>
           <div class="handle">
             <el-radio
               label="(index+1)"

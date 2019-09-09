@@ -147,6 +147,7 @@ export default {
       shopImg: require("../assets/image/icon_shop.png"),
       imgSrc: require("../assets/image/shop.jpg"),
       number:1,
+      
       bannerList: [
         { src: require("../assets/image/details.jpg") },
         { src: require("../assets/image/details.jpg") },
