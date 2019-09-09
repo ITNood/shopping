@@ -11,7 +11,7 @@
         <div class="shoper clear">
             <!--全选-->
           <el-checkbox
-            v-model="checkAll"
+            v-model="item.checkAll"
             @change="handleCheckAllChange"
           ></el-checkbox><span>{{item.title}}</span>
           <router-link to="item.url">进店<i class="el-icon-arrow-right"></i></router-link>
@@ -22,7 +22,7 @@
             :key="index"
           >
             <el-checkbox
-              v-model="checked"
+              v-model="todo.checked"
             ></el-checkbox>
             <!--商品图片-->
             <router-link :to="{path:'/details',query:{id:todo.id}}"><img :src="todo.img"></router-link>
@@ -39,7 +39,7 @@
                 <!--价格、数量选择-->
                 <div class="priceNumber">
                     <span>￥{{todo.price}}</span>
-                    <el-input-number v-model="num" :min="1" class="addNumber"></el-input-number>
+                    <el-input-number v-model="todo.num" :min="1" class="addNumber"></el-input-number>
                 </div>
             </div>
           </li>
@@ -67,7 +67,6 @@ export default {
     return {
       msg: "购物车",
       checkAll: false,
-      num:'',
       checked:[],
       allChecked:false,
       total:'0.00',
@@ -76,6 +75,7 @@ export default {
           title: "店铺",
           todos: [
             {
+              num:1,
               id: 2,
               img: require("../assets/image/shop.jpg"),
               title:'商品名称',
@@ -86,6 +86,7 @@ export default {
               ]
             },
             {
+              num:1,
               id: 2,
               img: require("../assets/image/shop.jpg"),
               title:'商品名称',
@@ -102,6 +103,7 @@ export default {
           title: "店铺",
           todos: [
             {
+              num:1,
               id: 2,
               img: require("../assets/image/shop.jpg"),
               title:'商品名称',
@@ -112,6 +114,7 @@ export default {
               ]
             },
             {
+              num:1,
               id: 2,
               img: require("../assets/image/shop.jpg"),
               title:'商品名称',

@@ -772,9 +772,130 @@ ul, li {
     font-size: 16px;
 }
 
-.carbtn:focus, .carbtn:hover{
+.carbtn:focus, .carbtn:hover {
     background-color: #ffc105;
     color: #000;
+}
+
+.choose {
+    padding: 20px;
+    background-color: white;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.choose::after {
+    background-image: url('../image/line.png');
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 3px;
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+}
+
+.username, .mobile {
+    font-size: 14px;
+    width: 50%;
+}
+
+.mobile {
+    text-align: right;
+}
+
+.address {
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px 0;
+}
+
+.handle {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.handle .el-radio__input.is-checked+.el-radio__label {
+    color: #ff2150
+}
+
+.handle .el-radio__input.is-checked .el-radio__inner {
+    border-color: #ff2150;
+    background: #ff2150
+}
+
+.handle .el-radio {
+    width: 50%;
+    margin: 0;
+}
+
+.editDel {
+    width: 50%;
+    text-align: right;
+}
+
+.editDel>a {
+    color: #000;
+    font-size: 14px;
+    padding: 0 5px;
+}
+
+.editDel>a>i {
+    font-size: 16px;
+}
+
+.addressList>li {
+    padding: 20px;
+    margin-bottom: 8px;
+    background: white
+}
+
+.addressForm {
+    padding: 20px;
+}
+
+.addressForm .el-form-item {
+    display: flex;
+    align-items: center;
+    border-bottom: rgba(0, 0, 0, .2) 1px solid;
+}
+
+.addressForm .el-form-item__label {
+    width: 30%;
+}
+
+.addressForm .el-form-item__content {
+    width: 70%;
+}
+
+.addressForm .el-input__inner, .addressForm .el-textarea__inner {
+    border: none;
+    background-color: transparent
+}
+
+.submit {
+    background: #ffc105;
+    color: #000;
+    display: block;
+    width: 100%;
+    border:none;
+}
+
+.submit span {
+    font-size: 16px;
+}
+
+.submit:hover,.submit:focus{
+    color: #000;
+    background-color:#ffc105;
 }
 /*-----------------------*/
 

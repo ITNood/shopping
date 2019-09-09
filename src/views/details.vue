@@ -143,7 +143,7 @@ export default {
       classA: "el-icon-star-off",
       classB: "el-icon-star-on",
       isCollect: true,
-      select: true,
+      select: false,
       shopImg: require("../assets/image/icon_shop.png"),
       imgSrc: require("../assets/image/shop.jpg"),
       number:1,

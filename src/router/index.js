@@ -67,6 +67,20 @@ export default new Router({
       component: () => {
         return import('../views/details')
       }
+    },
+    {
+      path: '/address',
+      name: 'address',
+      component: () => {
+        return import('../views/address')
+      }
+    },
+    {
+      path: '/addEdit',
+      name: 'addEdit',
+      component: () => {
+        return import('../views/addEdit')
+      }
     }
   ]
 })
