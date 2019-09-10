@@ -46,8 +46,8 @@ export default {
       if (time >= 10) {
         return time;
       } else {
-       // return `0${time}`;
-       return `00`
+        // return `0${time}`;
+        return `00`;
       }
     }
   }

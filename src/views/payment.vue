@@ -2,31 +2,83 @@
   <div>
     <Header :title="msg" />
     <div class="layout">
-        <div class="selectPay">
-            <ul>
-                <li>
-                    <span class="sum"></span>余额支付
-                    <el-radio v-model="radio" label="1"></el-radio>
-                </li>
-                <li>
-                    <span class="wechat"></span>微信支付
-                    <el-radio v-model="radio" label="2"></el-radio>
-                </li>
-            </ul>
-        </div>
+      <div class="selectPay">
+        <el-radio-group
+          v-model="radio"
+          @change="selectRadio()"
+        >
+          <el-radio label="1"><span class="sum aa"></span>余额支付</el-radio>
+
+          <el-radio label="2"><span class="wechat aa"></span>微信支付</el-radio>
+        </el-radio-group>
+      </div>
     </div>
+    <el-row class="paymoney">
+      <el-col
+        :span="16"
+        class="payTotal"
+      >支付：<span>￥{{total}}</span></el-col>
+      <el-col
+        :span="8"
+        class="paySum"
+      ><span @click="pay()">付款</span></el-col>
+    </el-row>
+    <Pin
+      @submit="submit"
+      ref="child"
+      :hide="show"
+    />
   </div>
 </template>
 
 <script>
 import Header from "../components/header";
+import Pin from "../components/pin";
+import jsBridge from "../assets/js/jsbridge-mini";
 export default {
-  components: { Header },
+  components: { Header, Pin },
   data() {
     return {
-        msg:'支付方式',
-        radio:'1',
+      msg: "支付方式",
+      radio: "1",
+      total: "200.00",
+      show: true
     };
+  },
+  methods: {
+    selectRadio() {
+      console.log(this.radio);
+    },
+    //付款
+    buy(flag) {
+      this.dialogVisible = !this.dialogVisible;
+    },
+    pay() {
+      if (this.radio == 1) {
+        this.buy();
+        this.$refs.child.open();
+      } else {
+          //微信支付
+        jsBridge.pay(
+          {
+            channel: 0, //integer, 支付渠道, 0微信，1支付宝
+            orderid: "201601010001", //string(64), 订单号
+            title: "购买VIP会员", //string(128), 订单名称
+            amount: this.total //decimal，支付金额（元）
+          },
+          function(succ) {
+            if (succ) {
+              alert("支付成功");
+            } else {
+              alert("支付失败或取消了支付");
+            }
+          }
+        );
+      }
+    },
+    submit(pwd) {
+        
+    }
   }
 };
 </script>

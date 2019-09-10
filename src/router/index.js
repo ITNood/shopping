@@ -95,6 +95,27 @@ export default new Router({
       component: () => {
         return import('../views/payment')
       }
+    },
+    {
+      path: '/paySuccess',
+      name: 'paySuccess',
+      component: () => {
+        return import('../views/paySuccess')
+      }
+    },
+    {
+      path: '/shopClassify',
+      name: 'shopClassify',
+      component: () => {
+        return import('../views/shopClassify')
+      }
+    },
+    {
+      path: '/product',
+      name: 'product',
+      component: () => {
+        return import('../views/product')
+      }
     }
   ]
 })
