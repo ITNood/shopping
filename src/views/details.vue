@@ -98,7 +98,15 @@
         <!--商品-->
         <div class="selectShop">
           <div class="shopDetails">
-              <img :src="imgSrc">
+              <!-- <img :src="imgSrc"> -->
+              <el-image :src="imgSrc">
+                <div
+                  slot="error"
+                  class="image-slot"
+                >
+                  <i class="el-icon-picture-outline"></i>
+                </div>
+              </el-image>
               <div class="selectRight">
                   <h5>{{title}}</h5>
                   <h4>￥{{price}}</h4>
@@ -119,6 +127,7 @@
         </div>
       </div>
       <el-button class="carbtn">确定</el-button>
+      
     </el-drawer>
   </div>
 </template>
