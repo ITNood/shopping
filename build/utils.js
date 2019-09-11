@@ -54,7 +54,6 @@ exports.cssLoaders = function (options) {
       return ['vue-style-loader'].concat(loaders)
     }
   }
-
  
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
