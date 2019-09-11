@@ -39,7 +39,7 @@ export default {
         {
           img: require("../assets/image/shop.jpg"),
           title: "商品名称",
-          endTime: "2019-09-05 17:23:00",
+          endTime: "2019-09-12 17:23:00",
           id: 2,
           price: "100.00",
           oldPrice:'199.00'
@@ -47,7 +47,7 @@ export default {
         {
           img: require("../assets/image/shop.jpg"),
           title: "商品名称",
-          endTime: "2019-09-08 22:00:00",
+          endTime: "2019-09-14 22:00:00",
           id: 3,
           price: "100.00",
           oldPrice:'199.00'
@@ -55,7 +55,7 @@ export default {
         {
           img: require("../assets/image/shop.jpg"),
           title: "商品名称",
-          endTime: "2019-09-07 22:00:00",
+          endTime: "2019-09-15 22:00:00",
           id: 3,
           price: "100.00",
           oldPrice:'199.00'
@@ -63,7 +63,7 @@ export default {
         {
           img: require("../assets/image/shop.jpg"),
           title: "商品名称",
-          endTime: "2019-09-06 22:00:00",
+          endTime: "2019-09-16 22:00:00",
           id: 3,
           price: "100.00",
           oldPrice:'199.00'

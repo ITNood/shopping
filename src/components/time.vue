@@ -24,7 +24,7 @@ export default {
         clearInterval(time);
       }
       this.timeDown();
-    }, 1000);
+    }, 100);
   },
 
   methods: {
