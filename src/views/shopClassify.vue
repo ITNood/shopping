@@ -27,7 +27,15 @@
               v-for="(list,index) in item.lists"
               :key="index"
             >
-              <img :src="list.img">
+              <!-- <img :src="list.img"> -->
+              <el-image :src="list.img">
+                <div
+                  slot="error"
+                  class="image-slot"
+                >
+                  <i class="el-icon-picture-outline"></i>
+                </div>
+              </el-image>
               <p>{{list.name}}</p>
             </router-link>
           </div>

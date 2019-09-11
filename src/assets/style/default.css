@@ -33,6 +33,10 @@ ul, li {
     margin: 0;
 }
 
+.el-image {
+    overflow: visible
+}
+
 .layout {
     margin: 60px 0;
 }
@@ -109,6 +113,7 @@ ul, li {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-top: 5px;
 }
 
 .shop a h4 {
@@ -1162,6 +1167,7 @@ ul, li {
 .classList>a>p {
     text-align: center;
     color: #000;
+    margin-top: 5px;
 }
 
 .product {
@@ -1185,6 +1191,7 @@ ul, li {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-top: 5px;
 }
 
 .priceVolume {
@@ -1200,11 +1207,12 @@ ul, li {
     width: 50%;
 }
 
-.priceVolume>span{
+.priceVolume>span {
     text-align: right;
     width: 50%;
     color: #999;
 }
+
 /*-------------------------------------------------*/
 
 @media screen and (min-height:667px) and (max-height:736px) {

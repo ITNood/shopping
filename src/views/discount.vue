@@ -1,7 +1,10 @@
 <template>
   <div>
     <Header :title="msg" />
-    <div class="layout" style="margin-bottom:0;">
+    <div
+      class="layout"
+      style="margin-bottom:0;"
+    >
       <img :src="banner">
       <div class="discountList">
         <ul>
@@ -9,11 +12,21 @@
             v-for="(item,index) in items"
             :key="index"
           >
-            <img :src="item.img">
+            <!-- <img :src="item.img"> -->
+            <el-image :src="item.img">
+              <div
+                slot="error"
+                class="image-slot"
+              >
+                <i class="el-icon-picture-outline"></i>
+              </div>
+            </el-image>
             <div class="discountRight">
               <h5>{{item.title}}</h5>
-              <div class="timeOver">距离结束：<span>
-                  <timer :endTime='item.endTime' /></span></div>
+              <div class="timeOver">距离结束：
+                <span>
+                  <timer :endTime='item.endTime' /></span>
+              </div>
               <div class="price">
                 ￥{{item.price}} <router-link :to="{path:'/details',query:{id:item.id}}">立即抢购</router-link>
               </div>
@@ -42,7 +55,7 @@ export default {
           endTime: "2019-09-12 17:23:00",
           id: 2,
           price: "100.00",
-          oldPrice:'199.00'
+          oldPrice: "199.00"
         },
         {
           img: require("../assets/image/shop.jpg"),
@@ -50,7 +63,7 @@ export default {
           endTime: "2019-09-14 22:00:00",
           id: 3,
           price: "100.00",
-          oldPrice:'199.00'
+          oldPrice: "199.00"
         },
         {
           img: require("../assets/image/shop.jpg"),
@@ -58,7 +71,7 @@ export default {
           endTime: "2019-09-15 22:00:00",
           id: 3,
           price: "100.00",
-          oldPrice:'199.00'
+          oldPrice: "199.00"
         },
         {
           img: require("../assets/image/shop.jpg"),
@@ -66,7 +79,7 @@ export default {
           endTime: "2019-09-16 22:00:00",
           id: 3,
           price: "100.00",
-          oldPrice:'199.00'
+          oldPrice: "199.00"
         }
       ]
     };
@@ -76,4 +89,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

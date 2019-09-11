@@ -39,7 +39,14 @@
             :key="index"
           >
             <router-link :to="{path:'/details',query:{id:time.id}}">
-              <img :src="time.img">
+              <el-image :src="time.img">
+                <div
+                  slot="error"
+                  class="image-slot"
+                >
+                  <i class="el-icon-picture-outline"></i>
+                </div>
+              </el-image>
               <h6>{{time.title}}</h6>
               <h4>￥{{time.price}}</h4>
             </router-link>
@@ -63,10 +70,10 @@ export default {
     return {
       isTrue: true,
       fixed: true,
-      bannerList:[
-        {src:require('../assets/image/banner.jpg')},
-        {src:require('../assets/image/banner.jpg')},
-        {src:require('../assets/image/banner.jpg')}
+      bannerList: [
+        { src: require("../assets/image/banner.jpg") },
+        { src: require("../assets/image/banner.jpg") },
+        { src: require("../assets/image/banner.jpg") }
       ],
       todos: [
         { img: require("../assets/image/list_banner1.jpg"), url: "" },
@@ -83,21 +90,21 @@ export default {
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             }
           ]
         },
@@ -111,7 +118,7 @@ export default {
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             },
             {
               url: "",
@@ -124,7 +131,7 @@ export default {
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             }
           ]
         },
@@ -138,21 +145,21 @@ export default {
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             },
             {
               url: "",
               img: require("../assets/image/shop.jpg"),
               title: "纯电动牙刷",
               price: "8000.00",
-              id:1
+              id: 1
             }
           ]
         }

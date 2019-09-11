@@ -21,7 +21,15 @@
             :key="index"
           >
             <router-link :to="{path:'/details',query:{id:item.id}}">
-              <img :src="item.img">
+              <!-- <img :src="item.img"> -->
+              <el-image :src="item.img">
+                <div
+                  slot="error"
+                  class="image-slot"
+                >
+                  <i class="el-icon-picture-outline"></i>
+                </div>
+              </el-image>
               <h5>{{item.title}}</h5>
               <div class="priceVolume">
                 <h4>￥{{item.price}}</h4>

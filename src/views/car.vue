@@ -25,7 +25,16 @@
               v-model="todo.checked"
             ></el-checkbox>
             <!--商品图片-->
-            <router-link :to="{path:'/details',query:{id:todo.id}}"><img :src="todo.img"></router-link>
+            <router-link :to="{path:'/details',query:{id:todo.id}}">
+            <el-image :src="todo.img">
+                <div
+                  slot="error"
+                  class="image-slot"
+                >
+                  <i class="el-icon-picture-outline"></i>
+                </div>
+              </el-image>
+            </router-link>
             <div class="shopRight">
                 <!--商品名称-->
                 <div class="shopName">
