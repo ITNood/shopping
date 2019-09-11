@@ -6,6 +6,10 @@
     text-decoration: none;
 }
 
+@black: #000;
+@yellow: #ffc105;
+@red: #ff2150;
+
 body {
     background-color: #f6f6f6;
 }
@@ -49,8 +53,8 @@ li {
 
 .el-checkbox__input.is-checked .el-checkbox__inner,
 .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-    border-color: #ffc105;
-    background-color: #ffc105
+    border-color: @yellow;
+    background-color: @yellow
 }
 
 .layout {
@@ -58,7 +62,7 @@ li {
 }
 
 #top {
-    background: #000;
+    background: @black;
 }
 
 .search_bkg .el-input__inner,
@@ -93,7 +97,7 @@ li {
 
         a {
             display: block;
-            color: #000;
+            color: @black;
             padding: 10px;
 
             img {
@@ -121,7 +125,7 @@ li {
 
     a {
         display: block;
-        color: #000;
+        color: @black;
 
         h6 {
             font-size: 13px;
@@ -146,7 +150,7 @@ li {
     margin-bottom: 10px;
 
     a {
-        color: #000;
+        color: @black;
         font-weight: normal;
         position: absolute;
         right: 0;
@@ -158,7 +162,7 @@ li {
 
 
 #header {
-    background-color: #000;
+    background-color: @black;
     color: white;
     padding: 10px;
     position: fixed;
@@ -201,7 +205,7 @@ li {
     }
 
     a {
-        color: #000;
+        color: @black;
         position: absolute;
         right: 0;
         top: 0;
@@ -242,7 +246,7 @@ li {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: #000;
+        color: @black;
         line-height: 30px;
     }
 
@@ -323,7 +327,7 @@ li {
 }
 
 .settlement .el-checkbox__input.is-checked+.el-checkbox__label {
-    color: #000;
+    color: @black;
 }
 
 .total {
@@ -333,7 +337,7 @@ li {
 }
 
 .payment {
-    background-color: #ffc105;
+    background-color: @yellow;
     height: 60px;
     text-align: center;
     line-height: 60px;
@@ -382,7 +386,7 @@ li {
     position: relative;
 
     span {
-        color: #ffc105;
+        color: @yellow;
         position: absolute;
         right: 0;
         top: 0;
@@ -407,8 +411,8 @@ li {
         line-height: 25px;
         display: block;
         padding: 0 15px;
-        background: #ffc105;
-        color: #000;
+        background: @yellow;
+        color: @black;
         font-weight: normal;
     }
 }
@@ -452,11 +456,11 @@ li {
     }
 
     .el-tabs__item.is-active {
-        color: #000;
+        color: @black;
     }
 
     .el-tabs__active-bar {
-        background-color: #ffc105;
+        background-color: @yellow;
     }
 }
 
@@ -479,7 +483,7 @@ li {
 }
 
 .couponLeft {
-    background-color: #ffc105;
+    background-color: @yellow;
     width: 60%;
     border-right: 1px dashed white;
     padding: 15px;
@@ -507,7 +511,7 @@ li {
 
     .get {
         border: none;
-        color: #ffc105;
+        color: @yellow;
         margin: 0 auto;
         display: block;
 
@@ -527,7 +531,7 @@ li {
     }
 
     a.color {
-        color: #ffc105;
+        color: @yellow;
     }
 
     p {
@@ -579,7 +583,7 @@ li {
         width: 100%;
         text-align: center;
         font-size: 18px;
-        color: #ffc105
+        color: @yellow
     }
 }
 
@@ -602,7 +606,7 @@ li {
 
     a {
         display: flex;
-        color: #000;
+        color: @black;
         align-items: center;
         width: 100%;
     }
@@ -685,13 +689,13 @@ li {
 }
 
 .onecebuy {
-    background-color: #ffc105;
+    background-color: @yellow;
 }
 
 .cars {
     width: 40px;
     height: 40px;
-    background-color: #ffc105;
+    background-color: @yellow;
     border-radius: 50%;
     position: fixed;
     top: 80px;
@@ -769,7 +773,7 @@ li {
     li {
         margin-right: 10px;
         background: #e9e9e9;
-        color: #000;
+        color: @black;
         padding: 5px 15px;
         border-radius: 4px
     }
@@ -789,12 +793,12 @@ li {
 
 .addShop .el-input-number__decrease:hover:not(.is-disabled)~.el-input .el-input__inner:not(.is-disabled),
 .addShop .el-input-number__increase:hover:not(.is-disabled)~.el-input .el-input__inner:not(.is-disabled) {
-    border-color: #ffc105
+    border-color: @yellow
 }
 
 .addShop .el-input-number__decrease:hover,
 .addShop .el-input-number__increase:hover {
-    color: #ffc105
+    color: @yellow
 }
 
 .carbtn {
@@ -804,8 +808,8 @@ li {
     text-align: center;
     padding: 0;
     border: 0;
-    background-color: #ffc105;
-    color: #000;
+    background-color: @yellow;
+    color: @black;
     position: fixed;
     bottom: 0;
 
@@ -816,8 +820,8 @@ li {
 
 .carbtn:focus,
 .carbtn:hover {
-    background-color: #ffc105;
-    color: #000;
+    background-color: @yellow;
+    color: @black;
 }
 
 .choose {
@@ -872,12 +876,12 @@ li {
     align-items: center;
 
     .el-radio__input.is-checked+.el-radio__label {
-        color: #ff2150
+        color: @red
     }
 
     .el-radio__input.is-checked .el-radio__inner {
-        border-color: #ff2150;
-        background: #ff2150
+        border-color: @red;
+        background: @red
     }
 
     .el-radio {
@@ -891,7 +895,7 @@ li {
     text-align: right;
 
     a {
-        color: #000;
+        color: @black;
         font-size: 14px;
         padding: 0 5px;
 
@@ -933,8 +937,8 @@ li {
 }
 
 .submit {
-    background: #ffc105;
-    color: #000;
+    background: @yellow;
+    color: @black;
     display: block;
     width: 100%;
     border: none;
@@ -945,14 +949,14 @@ li {
 
     &&:hover,
     &&:focus {
-        color: #000;
-        background-color: #ffc105;
+        color: @black;
+        background-color: @yellow;
     }
 }
 
 .noAddress {
     a {
-        color: #000;
+        color: @black;
         line-height: 50px;
         display: block;
         font-size: 14px;
@@ -1009,8 +1013,8 @@ li {
 }
 
 .subOrder {
-    background-color: #ffc105;
-    color: #000;
+    background-color: @yellow;
+    color: @black;
 }
 
 .couponDrawer {
@@ -1066,12 +1070,12 @@ li {
     }
 
     .el-radio__input.is-checked+.el-radio__label {
-        color: #000;
+        color: @black;
     }
 
     .el-radio__input.is-checked .el-radio__inner {
-        border-color: #ffc105;
-        background: #ffc105;
+        border-color: @yellow;
+        background: @yellow;
     }
 }
 
@@ -1104,7 +1108,7 @@ li {
 }
 
 .paySum {
-    background: #ffc105;
+    background: @yellow;
     line-height: 60px;
     text-align: center;
 
@@ -1150,8 +1154,8 @@ li {
     align-items: center;
 
     a {
-        color: #000;
-        border: 1px solid #ffc105;
+        color: @black;
+        border: 1px solid @yellow;
         line-height: 36px;
         border-radius: 18px;
         width: 40%;
@@ -1159,7 +1163,7 @@ li {
         font-size: 14px;
 
         &&:first-child {
-            background-color: #ffc105;
+            background-color: @yellow;
         }
     }
 }
@@ -1181,8 +1185,8 @@ li {
     }
 
     .el-tabs__item.is-active {
-        color: #000;
-        background-color: #ffc105;
+        color: @black;
+        background-color: @yellow;
     }
 
     .el-tabs__active-bar {
@@ -1215,7 +1219,7 @@ li {
 
         p {
             text-align: center;
-            color: #000;
+            color: @black;
             margin-top: 5px;
         }
     }
@@ -1236,7 +1240,7 @@ li {
         padding-bottom: 8px;
 
         h5 {
-            color: #000;
+            color: @black;
             font-size: 14px;
             overflow: hidden;
             text-overflow: ellipsis;

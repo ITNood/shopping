@@ -9,7 +9,6 @@ function resolve(dir) {
 }
 
 
-
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
@@ -27,7 +26,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'assets':resolve('src/assets')
+      'assets':resolve('src/assets')//less配置
     }
   },
   module: {
