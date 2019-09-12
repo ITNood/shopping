@@ -48,7 +48,7 @@
                 <!--价格、数量选择-->
                 <div class="priceNumber">
                     <span>￥{{todo.price}}</span>
-                    <el-input-number v-model="todo.num" :min="1" class="addNumber"></el-input-number>
+                    <el-input-number v-model="todo.num" :min="1" class="addNumber" size="mini"></el-input-number>
                 </div>
             </div>
           </li>

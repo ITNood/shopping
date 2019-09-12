@@ -18,10 +18,8 @@ const Axios = axios.create({
 Axios.interceptors.request.use(
     config => {
         const token = window.localStorage.getItem('token')
-        const lang = window.localStorage.getItem('lang')
-        if (token&&lang) {
+        if (token) {
             config.headers.Token = token
-            config.headers.lang = lang
         }
         return config
     },

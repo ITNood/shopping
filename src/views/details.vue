@@ -71,12 +71,12 @@
         <router-link to=""><i class="el-icon-chat-dot-round"></i>
           <p>沟通</p>
         </router-link>
-        <router-link
-          to=""
-          :style="{'color':(isCollect ? '':'red')}"
+        <a
+        @click="keep()"
+          :style="{'color':(isCollect ? '':'#ffc105')}"
         ><i :class="isCollect ? classA:classB"></i>
           <p>{{isCollect?'收藏':'已收藏'}}</p>
-        </router-link>
+        </a>
       </el-col>
       <el-col
         :span="6"
@@ -117,9 +117,12 @@
         <!--属性-->
         <div class="selectShop" v-for="(list,index) in lists" :key="index">
             <p>{{list.name}}</p>
-            <ul class="listNature">
-                <li @click="radio($event)" v-for="(nature,index) in list.natures" :key="index">{{nature.text}}</li>
-            </ul>
+            <div class="listNature" >
+                 <el-radio-group  v-model="list.radio1" size="mini">
+                     <!-- <el-radio  :label="index"  v-for="(nature,index) in list.natures" :key="index" border >{{nature.text}}</el-radio> -->
+                     <el-radio-button :label="index" v-for="(nature,index) in list.natures" :key="index">{{nature.text}}</el-radio-button>
+                 </el-radio-group>
+            </div>
         </div>
         <!--数量-->
         <div class="shopNumber">
@@ -181,6 +184,10 @@ export default {
     };
   },
   methods: {
+    //收藏
+    keep(){
+      this.isCollect=!this.isCollect
+    },
     //加入购物车
     join() {
       this.select = true;
