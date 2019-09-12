@@ -34,7 +34,7 @@
         <div class="sales">
           <el-row>
             <el-col :span="20">
-              销量:{{number}}件
+              销量:{{volume}}件
             </el-col>
             <el-col
               :span="4"
@@ -119,14 +119,13 @@
             <p>{{list.name}}</p>
             <div class="listNature" >
                  <el-radio-group  v-model="list.radio1" size="mini">
-                     <!-- <el-radio  :label="index"  v-for="(nature,index) in list.natures" :key="index" border >{{nature.text}}</el-radio> -->
                      <el-radio-button :label="index" v-for="(nature,index) in list.natures" :key="index">{{nature.text}}</el-radio-button>
                  </el-radio-group>
             </div>
         </div>
         <!--数量-->
         <div class="shopNumber">
-          数量<el-input-number v-model="number" :min="1" class="addShop"></el-input-number>
+          数量<el-input-number v-model="number" :min="1" class="addShop" size="mini"></el-input-number>
         </div>
       </div>
       <el-button class="carbtn">确定</el-button>
@@ -145,26 +144,27 @@ export default {
   data() {
     return {
       msg: "商品详情",
-      price: "100.00",
-      oldPrice: "299.00",
+      price: "100.00",//现价
+      oldPrice: "299.00",//原价
       title: "商品名称",
-      number: 0,
+      volume: 0,//销量
       address: "地址",
       shopName: "店铺名称",
       details: "",
       classA: "el-icon-star-off",
       classB: "el-icon-star-on",
-      isCollect: true,
-      select: false,
-      shopImg: require("../assets/image/icon_shop.png"),
-      imgSrc: require("../assets/image/shop.jpg"),
+      isCollect: true,//收藏
+      select: false,//选择属性
+      shopImg: require("../assets/image/icon_shop.png"),//店铺logo
+      imgSrc: require("../assets/image/shop.jpg"),//商品图
       number:1,
-      
+      //轮播
       bannerList: [
         { src: require("../assets/image/details.jpg") },
         { src: require("../assets/image/details.jpg") },
         { src: require("../assets/image/details.jpg") }
       ],
+      //属性
       lists:[
           {
               name:'颜色',
