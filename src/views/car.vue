@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       msg: "购物车",
-      checkedAll:false,
+      checkedAll: false,
       total: "0.00",
       data: [
         {
