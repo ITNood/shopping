@@ -8,6 +8,8 @@
         <el-input
           placeholder="请输入搜索内容"
           v-model="search"
+          size="small"
+          style="margin-top:4px"
         >
           <el-button
             slot="append"
