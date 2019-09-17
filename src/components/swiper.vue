@@ -2,7 +2,7 @@
   <div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(img,index) in banner" :key="index"><img :src="img.src"></div>
+        <div class="swiper-slide" v-for="(src,index) in banner" :key="index"><img :src="src.img"></div>
       </div>
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
@@ -21,7 +21,10 @@ export default {
     };
   },
   mounted() {
-    var swiper = new Swiper(".swiper-container", {
+   
+  },
+  updated() {
+     let swiper = new Swiper(".swiper-container", {
       pagination: {
         el: ".swiper-pagination",
         clickable :true,
@@ -31,7 +34,7 @@ export default {
         stopOnLastSlide: true
       }
     });
-  }
+  },
 };
 </script>
 

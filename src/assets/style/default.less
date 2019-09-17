@@ -14,6 +14,19 @@ body {
     background-color: #f6f6f6;
 }
 
+.el-image {
+    overflow: visible;
+
+    .image-slot {
+        color: #999;
+        text-align: center;
+
+        i {
+            font-size: 20px;
+        }
+    }
+}
+
 h1,
 h2,
 h3,
@@ -43,9 +56,7 @@ li {
     margin: 0;
 }
 
-.el-image {
-    overflow: visible
-}
+
 
 .el-checkbox__inner {
     border-radius: 50%;
@@ -1278,6 +1289,35 @@ li {
         color: #999;
     }
 }
+
+.infinite-list-wrapper {
+    .list {
+        li {
+            width: 50%;
+            box-sizing: border-box;
+            float: left;
+            padding: 10px;
+
+            a {
+                display: block;
+                padding-bottom: 8px;
+
+                h5 {
+                    color: @black;
+                    font-size: 14px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
 
 /*-------------------------------------------------*/
 

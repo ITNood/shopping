@@ -23,8 +23,8 @@
         >
           <div class="classList clear">
             <router-link
-              :to="list.url"
-              v-for="(list,index) in item.lists"
+              :to="{path:'/product',query:{id:list.id}}"
+              v-for="(list,index) in item.son"
               :key="index"
             >
               <!-- <img :src="list.img"> -->
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import api from '../API/index'
 import Search from "../components/search";
 import Header from "../components/header";
 export default {
@@ -56,50 +57,25 @@ export default {
       isTrue: true,
       fixed: true,
       activeName: "",
-      items: [
-        {
-          name: "服装箱包",
-          lists: [
-            {
-              img: require("../assets/image/shop.jpg"),
-              name: "钱包",
-              url:''
-            },
-            {
-              img: require("../assets/image/shop.jpg"),
-              name: "钱包",
-              url:''
-            },
-            {
-              img: require("../assets/image/shop.jpg"),
-              name: "钱包",
-              url:''
-            }
-          ]
-        },
-        {
-          name: "服装箱包",
-          lists: [
-            {
-              img: require("../assets/image/shop.jpg"),
-              name: "箱子",
-              url:''
-            },
-            {
-              img: require("../assets/image/shop.jpg"),
-              name: "箱子",
-              url:''
-            },
-            {
-              img: require("../assets/image/shop.jpg"),
-              name: "箱子",
-              url:''
-            }
-          ]
-        }
-      ]
+      items: []
     };
-  }
+  },
+  mounted() {
+    this.getdata()
+  },
+  methods: {
+    getdata(){
+      api.minicart.template.choices('shop/category/index').then(succ=>{
+        if(succ.status==200){
+          if(succ.res.category.length>0){
+            this.items=this.items.concat(succ.res.category)
+          }
+        }
+      }).catch(err=>{
+
+      })
+    }
+  },
 };
 </script>
 

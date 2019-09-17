@@ -14,7 +14,7 @@ const Axios = axios.create({
     maxRedirects: 1,
     headers: { "Content-Type": 'application/json' },
 })
-//拦截所有api请求，重新获取token
+//拦截所有api请求，获取token
 Axios.interceptors.request.use(
     config => {
         const token = window.localStorage.getItem('token')

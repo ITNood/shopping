@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://192.168.0.101:8080/', // 设置你调用的接口域名和端口号
+        target: 'http://www.tsl.com/', // 设置你调用的接口域名和端口号
         changeOrigin: true,     // 跨域
         // ws: true,        //如果要代理 websockets，配置这个参数
         // secure: false,  // 如果是https接口，需要配置这个参数

@@ -2,7 +2,6 @@
   <div>
     <Header :title="msg" />
     <div class="layout">
-
       <div
         class="carList"
         v-for="(val,k) in data"
@@ -99,7 +98,7 @@ export default {
     return {
       msg: "购物车",
       checkedAll: false,
-      total: "0.00",
+      total: 0,
       data: [
         {
           title: "店铺",
@@ -161,44 +160,36 @@ export default {
   },
   mounted() {
     this.data.forEach(item => {
-      this.$set(item, "checked", false); //Vue 解决不能检测到对象属性的添加或删除
-      // item.checked = false; //如果为真实数据直接设置的对象改变值不会更新视图
+      this.$set(item, "checked", false);
       if (item.goodsList) {
         item.goodsList.forEach(citem => {
           this.$set(citem, "checked", false);
-          // citem.checked = false;
         });
       }
     });
   },
-  updated(){
-      let allprice = [] 
-      this.data.map(item=>{
-        //console.log(item)
-        item.goodsList.map(goods=>{
-          if(goods.checked==true){
-             // console.log(goods.price*goods.num)
-              allprice.push(goods.price*goods.num)
-          }
-
-         })
-      })
-      //console.log(allprice)
-      if (allprice.length==0){
-        this.total = 0
-      }
-      else{
-        this.total= allprice.reduce((a,b)=>{
-          return a + b
-      })
-      }
-       
-     
+  updated() {
+    //价格计算
+    let allprice = [];
+    this.data.map(item => {
+      item.goodsList.map(goods => {
+        if (goods.checked == true) {
+          allprice.push(goods.price * goods.num);
+        }
+      });
+    });
+    //console.log(allprice)
+    if (allprice.length == 0) {
+      this.total = 0;
+    } else {
+      this.total= allprice.reduce((a, b) => {
+        return a + b;
+      });
+    }
   },
   methods: {
     //全选
     checkAll() {
-      
       this.data.forEach(item => {
         item.checked = this.checkedAll;
         if (item.goodsList) {
@@ -207,7 +198,6 @@ export default {
           });
         }
       });
-      console.log(this.data)
     },
     //商家全选
     _checkAll(val, k) {
@@ -240,10 +230,10 @@ export default {
         this.checkedAll = false;
       }
     },
-    
+
     //删除
     dele(ev) {
-      console.log(ev);
+      //console.log(ev);
     }
   }
 };

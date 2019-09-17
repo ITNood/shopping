@@ -7,7 +7,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'swiper/dist/css/swiper.min.css'
 import './assets/style/default.less'
+import vueiInfinite from 'vue-infinite-scroll'
 
+Vue.use(vueiInfinite)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

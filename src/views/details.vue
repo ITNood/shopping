@@ -159,9 +159,9 @@ export default {
       number:1,
       //轮播
       bannerList: [
-        { src: require("../assets/image/details.jpg") },
-        { src: require("../assets/image/details.jpg") },
-        { src: require("../assets/image/details.jpg") }
+        { img: require("../assets/image/details.jpg") },
+        { img: require("../assets/image/details.jpg") },
+        { img: require("../assets/image/details.jpg") }
       ],
       //属性
       lists:[

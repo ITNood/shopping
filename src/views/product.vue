@@ -11,33 +11,44 @@
       style="margin:120px 0 0"
     >
       <div class="product">
-        <el-row
-          :gutter="15"
-          class="productList"
+        <div
+          class="infinite-list-wrapper"
+          style="overflow:auto"
         >
-          <el-col
-            :span="12"
-            v-for="(item,index) in items"
-            :key="index"
+          <ul
+            class="list clear"
+            v-infinite-scroll="load"
+            infinite-scroll-disabled="disabled"
           >
-            <router-link :to="{path:'/details',query:{id:item.id}}">
-              <!-- <img :src="item.img"> -->
-              <el-image :src="item.img">
-                <div
-                  slot="error"
-                  class="image-slot"
-                >
-                  <i class="el-icon-picture-outline"></i>
+            <li v-for="(item,index) in items" :key="index">
+              <router-link :to="{path:'/details',query:{id:item.id}}">
+                <!-- <img :src="item.img"> -->
+                <el-image :src="item.img">
+                  <div
+                    slot="error"
+                    class="image-slot"
+                  >
+                    <i class="el-icon-picture-outline"></i>
+                  </div>
+                </el-image>
+                <h5>{{item.title}}</h5>
+                <div class="priceVolume">
+                  <h4>￥{{item.price}}</h4>
+                  <span>销量:{{item.volume}}</span>
                 </div>
-              </el-image>
-              <h5>{{item.title}}</h5>
-              <div class="priceVolume">
-                <h4>￥{{item.price}}</h4>
-                <span>销量:{{item.volume}}</span>
-              </div>
-            </router-link>
-          </el-col>
-        </el-row>
+              </router-link>
+            </li>
+          </ul>
+          <p
+            v-if="loading"
+            style="text-align:center"
+          ><i class="el-icon-loading"></i>加载中...</p>
+          <p
+            v-if="noMore"
+            style="text-align:center"
+          >没有更多了</p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -53,6 +64,8 @@ export default {
       msg: "所有分类",
       isTrue: true,
       fixed: true,
+      count:3,
+      loading: false,
       items: [
         {
           id: 1,
@@ -77,6 +90,23 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    noMore() {
+      return this.count >= this.items.length;
+    },
+    disabled() {
+      return this.loading || this.noMore;
+    }
+  },
+  methods: {
+    load() {
+      this.loading = true;
+      setTimeout(() => {
+        // this.count += 2;
+        // this.loading = false;
+      }, 1000);
+    }
   }
 };
 </script>

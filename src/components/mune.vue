@@ -23,7 +23,7 @@ export default {
         {
           img: require("../assets/image/icon_1.png"),
           name: "精品服饰",
-          url: ""
+          url: "/product"
         },
         {
           img: require("../assets/image/icon_2.png"),
@@ -68,7 +68,7 @@ export default {
         {
           img: require("../assets/image/icon_10.png"),
           name: "所有分类",
-          url: ""
+          url: "/shopClassify"
         }
       ]
     };
