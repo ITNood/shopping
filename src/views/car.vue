@@ -171,9 +171,34 @@ export default {
       }
     });
   },
+  updated(){
+      let allprice = [] 
+      this.data.map(item=>{
+        //console.log(item)
+        item.goodsList.map(goods=>{
+          if(goods.checked==true){
+             // console.log(goods.price*goods.num)
+              allprice.push(goods.price*goods.num)
+          }
+
+         })
+      })
+      //console.log(allprice)
+      if (allprice.length==0){
+        this.total = 0
+      }
+      else{
+        this.total= allprice.reduce((a,b)=>{
+          return a + b
+      })
+      }
+       
+     
+  },
   methods: {
     //全选
     checkAll() {
+      
       this.data.forEach(item => {
         item.checked = this.checkedAll;
         if (item.goodsList) {
@@ -182,6 +207,7 @@ export default {
           });
         }
       });
+      console.log(this.data)
     },
     //商家全选
     _checkAll(val, k) {
@@ -214,6 +240,7 @@ export default {
         this.checkedAll = false;
       }
     },
+    
     //删除
     dele(ev) {
       console.log(ev);
