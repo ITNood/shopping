@@ -45,7 +45,7 @@
       </div>
       <!--店铺-->
       <div class="store">
-        <router-link to="">
+        <router-link :to="{path:'/shop',query:{id:shopid}}">
           <div class="storeLeft">
             <img :src="shopImg">
             <span :title="shopName">{{shopName}}</span>
@@ -72,7 +72,7 @@
           <p>沟通</p>
         </router-link>
         <a
-        @click="keep()"
+          @click="keep()"
           :style="{'color':(isCollect ? '':'#ffc105')}"
         ><i :class="isCollect ? classA:classB"></i>
           <p>{{isCollect?'收藏':'已收藏'}}</p>
@@ -98,34 +98,51 @@
         <!--商品-->
         <div class="selectShop">
           <div class="shopDetails">
-              <!-- <img :src="imgSrc"> -->
-              <el-image :src="imgSrc">
-                <div
-                  slot="error"
-                  class="image-slot"
-                >
-                  <i class="el-icon-picture-outline"></i>
-                </div>
-              </el-image>
-              <div class="selectRight">
-                  <h5>{{title}}</h5>
-                  <h4>￥{{price}}</h4>
-                  <p>原价：<span>￥{{oldPrice}}</span></p>
+            <!-- <img :src="imgSrc"> -->
+            <el-image :src="imgSrc">
+              <div
+                slot="error"
+                class="image-slot"
+              >
+                <i class="el-icon-picture-outline"></i>
               </div>
+            </el-image>
+            <div class="selectRight">
+              <h5>{{title}}</h5>
+              <h4>￥{{price}}</h4>
+              <p>原价：<span>￥{{oldPrice}}</span></p>
+            </div>
           </div>
         </div>
         <!--属性-->
-        <div class="selectShop" v-for="(list,index) in lists" :key="index">
-            <p>{{list.name}}</p>
-            <div class="listNature" >
-                 <el-radio-group  v-model="list.radio1" size="mini">
-                     <el-radio-button :label="index" v-for="(nature,index) in list.natures" :key="index">{{nature.text}}</el-radio-button>
-                 </el-radio-group>
-            </div>
+        <div
+          class="selectShop"
+          v-for="(list,index) in lists"
+          :key="index"
+        >
+          <p>{{list.name}}</p>
+          <div class="listNature">
+            <el-radio-group
+              v-model="list.radio1"
+              size="mini"
+            >
+              <el-radio-button
+                :label="index"
+                v-for="(nature,index) in list.natures"
+                :key="index"
+                :title="nature.id"
+              >{{nature.val}}</el-radio-button>
+            </el-radio-group>
+          </div>
         </div>
         <!--数量-->
         <div class="shopNumber">
-          数量<el-input-number v-model="number" :min="1" class="addShop" size="mini"></el-input-number>
+          数量<el-input-number
+            v-model="number"
+            :min="1"
+            class="addShop"
+            size="mini"
+          ></el-input-number>
         </div>
       </div>
       <el-button class="carbtn">确定</el-button>
@@ -134,6 +151,7 @@
 </template>
 
 <script>
+import api from "../API/index";
 import Header from "../components/header";
 import Swiper from "../components/swiper";
 import jsBridge from "../assets/js/jsbridge-mini";
@@ -143,57 +161,63 @@ export default {
   data() {
     return {
       msg: "商品详情",
-      price: "100.00",//现价
-      oldPrice: "299.00",//原价
-      title: "商品名称",
-      volume: 0,//销量
-      address: "地址",
-      shopName: "店铺名称",
+      price: "0.00", //现价
+      oldPrice: "0.00", //原价
+      title: "",
+      volume: 0, //销量
+      address: "",
+      shopName: "",
       details: "",
       classA: "el-icon-star-off",
       classB: "el-icon-star-on",
-      isCollect: true,//收藏
-      select: false,//选择属性
-      shopImg: require("../assets/image/icon_shop.png"),//店铺logo
-      imgSrc: require("../assets/image/shop.jpg"),//商品图
-      number:1,
+      isCollect: true, //收藏
+      select: false, //选择属性
+      shopImg: require("../assets/image/icon_shop.png"), //店铺logo
+      imgSrc: require("../assets/image/shop.jpg"), //商品图
+      number: 1,
       //轮播
-      bannerList: [
-        { img: require("../assets/image/details.jpg") },
-        { img: require("../assets/image/details.jpg") },
-        { img: require("../assets/image/details.jpg") }
-      ],
+      bannerList: [],
       //属性
-      lists:[
-          {
-              name:'颜色',
-              natures:[
-                  {text:'白色'},
-                  {text:'红色'}
-              ]
-          },
-          {
-              name:'尺寸',
-              natures:[
-                  {text:'X'},
-                  {text:'XL'}
-              ]
-          }
-      ]
+      lists: [],
+      shopid:'',
+      shopPrice:[]
     };
   },
   methods: {
+    getdata() {
+      let id = this.$route.query.id;
+      api.minicart.template
+        .choices("shop/goodsDetail/index", { id: id })
+        .then(succ => {
+          if (succ.status == 200) {
+            this.bannerList = this.bannerList.concat(succ.res.slideshow); //轮播
+            this.lists =this.lists.concat(succ.res.spec);//属性
+            this.price=succ.res.goods.price//单价
+            this.oldPrice=succ.res.goods.orig_price//原价
+            this.title=succ.res.goods.name//商品名称
+            this.volume=succ.res.goods.sales//销量
+            this.address=succ.res.goods.city
+            this.details=succ.res.goods.detail//详情
+            this.shopName=succ.res.shop_name//店铺名称
+            this.shopImg=succ.res.shop_img//logo
+            this.shopid=succ.res.shop_id//店铺id
+            this.shopPrice=this.shopPrice.concat(succ.res.stock_price)
+            console.log(this.shopPrice)
+          }
+        })
+        .catch(err => {});
+    },
     //收藏
-    keep(){
-      this.isCollect=!this.isCollect
+    keep() {
+      this.isCollect = !this.isCollect;
     },
     //加入购物车
     join() {
       this.select = true;
     },
     //立即购买
-    buy(){
-      this.select=true
+    buy() {
+      this.select = true;
     },
     share() {
       //分享
@@ -218,9 +242,10 @@ export default {
       );
     },
     //选择属性
-    radio(ev){
-
-    }
+    radio(ev) {}
+  },
+  mounted() {
+    this.getdata();
   }
 };
 </script>

@@ -53,7 +53,7 @@
       <div class="listshop" v-show="like">
         <div class="shopTitle">猜你喜欢<router-link
             class="all"
-            to="/discount"
+            to="/like?id=1"
           >查看全部<i class="el-icon-arrow-right"></i></router-link>
         </div>
         <el-row
@@ -84,7 +84,7 @@
       <div class="listshop" v-show="recommend">
         <div class="shopTitle">每日推荐<router-link
             class="all"
-            to="/discount"
+            to="/like?id=2"
           >查看全部<i class="el-icon-arrow-right"></i></router-link>
         </div>
         <el-row

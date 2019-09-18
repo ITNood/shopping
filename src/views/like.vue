@@ -20,7 +20,10 @@
             v-infinite-scroll="load"
             infinite-scroll-disabled="disabled"
           >
-            <li v-for="(item,index) in items" :key="index">
+            <li
+              v-for="(item,index) in items"
+              :key="index"
+            >
               <router-link :to="{path:'/details',query:{id:item.id}}">
                 <!-- <img :src="item.img"> -->
                 <el-image :src="item.pic">
@@ -31,7 +34,7 @@
                     <i class="el-icon-picture-outline"></i>
                   </div>
                 </el-image>
-                <h5>{{item.title}}</h5>
+                <h5>{{item.name}}</h5>
                 <div class="priceVolume">
                   <h4>￥{{item.price}}</h4>
                   <span>销量:{{item.sales}}</span>
@@ -55,7 +58,7 @@
 </template>
 
 <script>
-import api from '../API/index'
+import api from "../API/index";
 import Search from "../components/search";
 import Header from "../components/header";
 export default {
@@ -65,9 +68,10 @@ export default {
       msg: "",
       isTrue: true,
       fixed: true,
-      count:20,
+      count: 20,
       loading: false,
-      items:[]
+      page: 1,
+      items: []
     };
   },
   computed: {
@@ -79,33 +83,70 @@ export default {
     }
   },
   mounted() {
-    this.getdata()
+    let id = this.$route.query.id;
+    if(id==1){
+      this.msg='猜你喜欢'
+    }else{
+      this.msg='每日推荐'
+    }
+    this.getdata();
+
   },
   methods: {
-    getdata(){
-      let id=this.$route.query.id
-      api.minicart.template.choices('shop/goods/index',{id:id}).then(succ=>{
-        if(succ.status==200){
-          //console.log(111)
-          if(succ.res.goods.length>0){
-            this.items=this.items.concat(succ.res.goods)
-          }
-          this.msg=succ.res.catName
-        }
-      }).catch(err=>{})
+    getdata() {
+      let id = this.$route.query.id;
+      if (id == 1) {
+        api.minicart.template
+          .choices("shop/likeGoods/index")
+          .then(succ => {
+            if (succ.status == 200) {
+              if (succ.res.goods.length > 0) {
+                this.items = this.items.concat(succ.res.goods);
+              }
+            }
+          })
+          .catch(err => {});
+      }else {
+        api.minicart.template
+          .choices("shop/proposalGoods/index")
+          .then(succ => {
+            if (succ.status == 200) {
+              if (succ.res.goods.length > 0) {
+                this.items = this.items.concat(succ.res.goods);
+              }
+            }
+          })
+          .catch(err => {});
+      }
     },
     load() {
+      let id = this.$route.query.id;
       this.loading = true;
       setTimeout(() => {
-        this.page++
-        api.minicart.template.choices('shop/goods/index',{id:id,page:this.page}).then(succ=>{
-        if(succ.status==200){
-          //console.log(111)
-          if(succ.res.goods.length>0){
-            this.items=this.items.concat(succ.res.goods)
-          }
+        this.page++;
+        if (id == 1) {
+          api.minicart.template
+            .choices("shop/likeGoods/index", { page: this.page })
+            .then(succ => {
+              if (succ.status == 200) {
+                if (succ.res.goods.length > 0) {
+                  this.items = this.items.push(succ.res.goods);
+                }
+              }
+            })
+            .catch(err => {});
+        }else {
+          api.minicart.template
+            .choices("shop/proposalGoods/index", { page: this.page })
+            .then(succ => {
+              if (succ.status == 200) {
+                if (succ.res.goods.length > 0) {
+                  this.items = this.items.push(succ.res.goods);
+                }
+              }
+            })
+            .catch(err => {});
         }
-      }).catch(err=>{})
       }, 1000);
     }
   }

@@ -90,7 +90,7 @@ export default {
                 that.lsitaddress = list;
               } else{
                 console.log(222)
-                //that.lsitaddress = this.items[0];
+                that.lsitaddress = this.items[0];
               }
             });
           }

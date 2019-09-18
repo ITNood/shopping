@@ -116,6 +116,13 @@ export default new Router({
       component: () => {
         return import('../views/product')
       }
+    },
+    {
+      path: '/like',
+      name: 'like',
+      component: () => {
+        return import('../views/like')
+      }
     }
   ]
 })

@@ -26,7 +26,8 @@ body {
         }
     }
 }
-.el-cascader-menu{
+
+.el-cascader-menu {
     min-width: 100px !important;
     max-width: 120px !important;
 }
@@ -891,6 +892,7 @@ li {
 
     i {
         font-size: 18px;
+        color: @yellow
     }
 
 }
@@ -901,12 +903,12 @@ li {
     align-items: center;
 
     .el-radio__input.is-checked+.el-radio__label {
-        color: @red
+        color: @yellow
     }
 
     .el-radio__input.is-checked .el-radio__inner {
-        border-color: @red;
-        background: @red
+        border-color: @yellow;
+        background: @yellow
     }
 
     .el-radio {
@@ -926,6 +928,10 @@ li {
 
         i {
             font-size: 16px;
+        }
+
+        &:last-child {
+            color: @red
         }
 
     }
@@ -1252,7 +1258,7 @@ li {
 }
 
 .product {
-    padding: 20px;
+    padding:10px; 
     overflow: hidden;
 }
 
