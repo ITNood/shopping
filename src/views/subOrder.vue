@@ -70,6 +70,7 @@
                 <el-input-number
                   v-model="todo.num"
                   :min="1"
+                  size="mini"
                   class="addNumber"
                 ></el-input-number>
               </div>
