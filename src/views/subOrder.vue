@@ -83,7 +83,7 @@
       <div class="shopTotal">共{{number}}件商品 小计：￥{{price}}</div>
       <!--订单详情-->
       <ul class="orderText">
-        <li>订单编号<span>{{orderNo}}</span></li>
+        <!-- <li>订单编号<span>{{orderNo}}</span></li> -->
         <li>订单时间<span>{{date}}</span></li>
         <li>可用优惠<span
             style="color:#d10216;font-weight:600"
@@ -184,7 +184,7 @@ export default {
       id: 1,
       number: 2,
       price: "200.00",
-      orderNo: 123456789,
+      //orderNo: 123456789,
       date: "2019/09/09",
       coupon: 50,
       fare: "包邮",

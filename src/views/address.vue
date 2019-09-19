@@ -1,32 +1,43 @@
 <template>
   <div>
     <Header :title="msg" />
-    <div class="layout">
+    <div class="layout" style="margin-bottom:0;">
       <div class="choose">
-        <div class="contact">
-          <div class="username">收货人：{{lsitaddress.call}}</div>
-          <div class="mobile">{{lsitaddress.mobile}}</div>
-        </div>
-        <div class="address"><i class="el-icon-location"></i>{{lsitaddress.region}}{{lsitaddress.address}}</div>
-        <div class="handle">
-          <el-radio
-            v-model="selected"
-            label="1"
-          >默认地址</el-radio>
-          <div class="editDel">
-            <a
-              @click="edit($event)"
-              :title="lsitaddress.id"
-            ><i class="el-icon-edit"></i>编辑</a>
-            <a><i
-                class="el-icon-delete"
-                @click="del($event)"
+        <!--如果没有电话和地址就显示 “还没有地址” -->
+        <div v-if="show">
+          <div class="contact">
+            <div class="username">收货人：{{lsitaddress.call}}</div>
+            <div class="mobile">{{lsitaddress.mobile}}</div>
+          </div>
+          <div class="address"><i class="el-icon-location"></i>{{lsitaddress.region}}{{lsitaddress.address}}</div>
+          <div class="handle">
+            <el-radio
+              v-model="selected"
+              label="1"
+            >默认地址</el-radio>
+            <div class="editDel">
+              <a
+                @click="edit($event)"
                 :title="lsitaddress.id"
-              ></i>删除</a>
+              ><i class="el-icon-edit"></i>编辑</a>
+              <a><i
+                  class="el-icon-delete"
+                  @click="del($event)"
+                  :title="lsitaddress.id"
+                ></i>删除</a>
+            </div>
           </div>
         </div>
+        <div
+          class="noAddress"
+          v-else
+        >
+          <router-link to="/addEdit"><i class="el-icon-location"></i>添加收货地址</router-link>
+        </div>
       </div>
+
       <!--地址列表-->
+      <div style="overflow:hidden">
       <ul class="addressList">
         <li
           v-for="(item,index) in items"
@@ -56,6 +67,7 @@
           </div>
         </li>
       </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -70,7 +82,8 @@ export default {
       msg: "地址管理",
       lsitaddress: {},
       selected: "1",
-      items: []
+      items: [],
+      show:false
     };
   },
   mounted() {
@@ -79,20 +92,34 @@ export default {
   methods: {
     getdata() {
       let that = this;
+      let isadd = false
+      let address = {}
       api.minicart.template
         .choices("shop/userAddress/select")
         .then(succ => {
           if (succ.status == 200) {
-            this.items = this.items.concat(succ.res);
+            if(succ.res.length>0){
+              this.show=true
+               this.items = this.items.concat(succ.res);
+            }else{
+              this.show=false
+            }
             this.items.map(list => {
+              //判断是否有默认地址，没有就设置第一条为默认地址
               if (list.default == 1) {
-                console.log(111)
-                that.lsitaddress = list;
-              } else{
-                console.log(222)
-                that.lsitaddress = this.items[0];
+                address = list;
+                isadd=true
               }
             });
+            console.log(address)
+            if(isadd==true){
+              console.log(1)
+               this.lsitaddress=address
+            }else{
+              this.lsitaddress =this.items[0]
+            }
+            console.log(this.lsitaddress)
+
           }
         })
         .catch(err => {});

@@ -123,14 +123,14 @@
           <p>{{list.name}}</p>
           <div class="listNature">
             <el-radio-group
-              v-model="list.radio1"
+              v-model='radio[index]'
+              @change="shuxing($event)"
               size="mini"
             >
               <el-radio-button
-                :label="index"
-                v-for="(nature,index) in list.natures"
+                :label="nature.id"
+                v-for="(nature,index) in list.val"
                 :key="index"
-                :title="nature.id"
               >{{nature.val}}</el-radio-button>
             </el-radio-group>
           </div>
@@ -145,7 +145,10 @@
           ></el-input-number>
         </div>
       </div>
-      <el-button class="carbtn">确定</el-button>
+      <el-button
+        class="carbtn"
+        @click="submit()"
+      >确定</el-button>
     </el-drawer>
   </div>
 </template>
@@ -160,6 +163,7 @@ export default {
   components: { Header, Swiper, Drawer },
   data() {
     return {
+      radio: [],
       msg: "商品详情",
       price: "0.00", //现价
       oldPrice: "0.00", //原价
@@ -172,15 +176,15 @@ export default {
       classB: "el-icon-star-on",
       isCollect: true, //收藏
       select: false, //选择属性
-      shopImg: require("../assets/image/icon_shop.png"), //店铺logo
-      imgSrc: require("../assets/image/shop.jpg"), //商品图
+      shopImg: "", //店铺logo
+      imgSrc: "", //商品图
       number: 1,
       //轮播
       bannerList: [],
       //属性
       lists: [],
-      shopid:'',
-      shopPrice:[]
+      shopid: "",
+      i: 0
     };
   },
   methods: {
@@ -191,21 +195,36 @@ export default {
         .then(succ => {
           if (succ.status == 200) {
             this.bannerList = this.bannerList.concat(succ.res.slideshow); //轮播
-            this.lists =this.lists.concat(succ.res.spec);//属性
-            this.price=succ.res.goods.price//单价
-            this.oldPrice=succ.res.goods.orig_price//原价
-            this.title=succ.res.goods.name//商品名称
-            this.volume=succ.res.goods.sales//销量
-            this.address=succ.res.goods.city
-            this.details=succ.res.goods.detail//详情
-            this.shopName=succ.res.shop_name//店铺名称
-            this.shopImg=succ.res.shop_img//logo
-            this.shopid=succ.res.shop_id//店铺id
-            this.shopPrice=this.shopPrice.concat(succ.res.stock_price)
-            console.log(this.shopPrice)
+            this.lists = this.lists.concat(succ.res.spec); //属性
+            this.price = succ.res.goods.price; //单价
+            this.oldPrice = succ.res.goods.orig_price; //原价
+            this.title = succ.res.goods.name; //商品名称
+            this.volume = succ.res.goods.sales; //销量
+            this.imgSrc = succ.res.goods.pic;//商品图
+            this.address = succ.res.goods.city;
+            this.details = succ.res.goods.detail; //详情
+            this.shopName = succ.res.shop_name; //店铺名称
+            this.shopImg = succ.res.shop_img; //logo
+            this.shopid = succ.res.shop_id; //店铺id
           }
         })
         .catch(err => {});
+    },
+    //属性
+    shuxing(ev) {
+      //console.log(ev);
+      // console.log(this.radio)
+      let id = this.$route.query.id;
+      api.minicart.template.choices("shop/goods/getGoodsPrice", { id: id, item: this.radio })
+        .then(succ => {
+          if (succ.status == 200) {
+            if (succ.res.price == 0) {
+              return false;
+            } else {
+              this.price = succ.res.price;
+            }
+          }
+        });
     },
     //收藏
     keep() {
@@ -214,10 +233,33 @@ export default {
     //加入购物车
     join() {
       this.select = true;
+      this.i = 0;
     },
     //立即购买
     buy() {
+      this.i = 1;
       this.select = true;
+    },
+    submit() {
+      let id = this.$route.query.id;
+      if (this.i == 0) {
+        api.minicart.template
+          .choices("shop/shopCar/insert", {
+            id: id,
+            number: this.number,
+            item: this.radio
+          })
+          .then(succ => {
+            if (succ.status == 200) {
+              alert(succ.msg);
+              this.$router.push("/car");
+            } else if (succ.status == 400) {
+              alert(succ.msg);
+            }
+          })
+          .catch(err => {});
+      } else {
+      }
     },
     share() {
       //分享
@@ -240,9 +282,7 @@ export default {
           alert(succ ? "分享成功" : "分享失败或取消了分享");
         }
       );
-    },
-    //选择属性
-    radio(ev) {}
+    }
   },
   mounted() {
     this.getdata();
