@@ -13,7 +13,7 @@
             :key="index"
           >
             <!-- <img :src="item.img"> -->
-            <el-image :src="item.img">
+            <el-image :src="item.pic">
               <div
                 slot="error"
                 class="image-slot"
@@ -22,15 +22,15 @@
               </div>
             </el-image>
             <div class="discountRight">
-              <h5>{{item.title}}</h5>
+              <h5>{{item.name}}</h5>
               <div class="timeOver">距离结束：
-                <span>
-                  <timer :endTime='item.endTime' /></span>
+                <span style="padding-right:8px;">
+                  <timer :endTime='item.end_time' /></span>
               </div>
               <div class="price">
-                ￥{{item.price}} <router-link :to="{path:'/details',query:{id:item.id}}">立即抢购</router-link>
+                ￥{{item.price}} <router-link :to="{path:'/discount',query:{id:item.id}}">立即抢购</router-link>
               </div>
-              <p class="oldPrice">￥{{item.oldPrice}}</p>
+              <p class="oldPrice">￥{{item.orig_price}}</p>
             </div>
           </li>
         </ul>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import api from '../API/index'
 import Header from "../components/header";
 import Timer from "../components/time";
 export default {
@@ -48,43 +49,23 @@ export default {
     return {
       msg: "限时打折",
       banner: require("../assets/image/discount.jpg"),
-      items: [
-        {
-          img: require("../assets/image/shop.jpg"),
-          title: "商品名称",
-          endTime: "2019-09-12 17:23:00",
-          id: 2,
-          price: "100.00",
-          oldPrice: "199.00"
-        },
-        {
-          img: require("../assets/image/shop.jpg"),
-          title: "商品名称",
-          endTime: "2019-09-14 22:00:00",
-          id: 3,
-          price: "100.00",
-          oldPrice: "199.00"
-        },
-        {
-          img: require("../assets/image/shop.jpg"),
-          title: "商品名称",
-          endTime: "2019-09-15 22:00:00",
-          id: 3,
-          price: "100.00",
-          oldPrice: "199.00"
-        },
-        {
-          img: require("../assets/image/shop.jpg"),
-          title: "商品名称",
-          endTime: "2019-09-16 22:00:00",
-          id: 3,
-          price: "100.00",
-          oldPrice: "199.00"
-        }
-      ]
+      items: []
     };
   },
-  methods: {}
+  mounted() {
+    this.getdata()
+  },
+  methods: {
+    getdata(){
+      api.minicart.template.choices('shop/promotion/index').then(succ=>{
+        if(succ.status==200){
+          if(succ.res.goods.length>0){
+            this.items=this.items.concat(succ.res.goods)
+          }
+        }
+      }).catch(err=>{})
+    }
+  }
 };
 </script>
 

@@ -13,7 +13,7 @@
             v-model="val.checked"
             @change="_checkAll(val)"
           ></el-checkbox><span>{{val.name}}</span>
-          <router-link :to="{path:'/',query:{id:val.id}}">进店<i class="el-icon-arrow-right"></i></router-link>
+          <router-link :to="{path:'/car',query:{id:val.id}}">进店<i class="el-icon-arrow-right"></i></router-link>
         </div>
         <ul class="shopList">
           <li
@@ -35,6 +35,7 @@
                 </div>
               </el-image>
             </router-link>
+            <div style="display:none">{{item.goods_attr}}</div>
             <div class="shopRight">
               <!--商品名称-->
               <div class="shopName">
@@ -84,14 +85,14 @@
         <el-col
           :span="6"
           class="payment"
-        >去结算>></el-col>
+        ><span @click="goPay()">去结算>></span></el-col>
       </el-row>
     </div>
   </div>
 </template>
 
 <script>
-import api from '../API/index'
+import api from "../API/index";
 import Header from "../components/header";
 export default {
   components: { Header },
@@ -107,8 +108,8 @@ export default {
     this.getdata();
     this.todos.forEach(item => {
       this.$set(item, "checked", false);
-      if (item.goodsList) {
-        item.goodsList.forEach(citem => {
+      if (item.data) {
+        item.data.forEach(citem => {
           this.$set(citem, "checked", false);
         });
       }
@@ -128,22 +129,54 @@ export default {
     if (allprice.length == 0) {
       this.total = 0;
     } else {
-      this.total= allprice.reduce((a, b) => {
+      this.total = allprice.reduce((a, b) => {
         return a + b;
       });
     }
   },
+
   methods: {
-    getdata(){
-      api.minicart.template.choices('shop/shopCar/select').then(succ=>{
-        if(succ.status==200){
-          if(succ.res.data.length>0){
-            this.todos=this.todos.concat(succ.res.data)
+    //结算
+    goPay() {
+      let goodsNumber = [];
+      this.todos.map(item => {
+        item.data.map(goods => {
+          let shopgoods = {};
+          if (goods.checked == true) {
+            shopgoods.id =  goods.id;
+            shopgoods.number = goods.goods_number;
+            goodsNumber.push(shopgoods);
+            console.log(goodsNumber)
           }
+        });
+      });
+      console.log(goodsNumber);
+      // console.log(this.todos)
+      //提交的参数id(商品id),number(商/品数量),添加到数组里提交，格式 shop:[{id:1,number:1},...]
+      api.minicart.template.choices('shop/createOrder/shopCarCreate',{shop:goodsNumber}).then(succ=>{
+        console.log(succ)
+        //返回值不是你想要的
+
+        if(succ.status==200){
+          window.localStorage.setItem('data',JSON.stringify(succ.res))
+          this.$router.push('/subOrder')
+        }else if(succ.status==400){
+          alert(succ.msg)
         }
-      }).catch(err=>{
-        
       })
+    },
+
+    getdata() {
+      api.minicart.template
+        .choices("shop/shopCar/select")
+        .then(succ => {
+          if (succ.status == 200) {
+            if (succ.res.data.length > 0) {
+              this.todos = this.todos.concat(succ.res.data);
+            }
+          }
+        })
+        .catch(err => {});
     },
     //全选
     checkAll() {
@@ -170,7 +203,7 @@ export default {
     //商品选择框
     handleCheck(item, index) {
       var check = []; //保存中间层是否被选中的布尔值
-      this.data.forEach((items, index) => {
+      this.todos.forEach((items, index) => {
         if (items.data) {
           var bool = items.data.every(citem => citem.checked);
           if (bool) {
@@ -191,15 +224,18 @@ export default {
     //删除
     dele(ev) {
       console.log(ev);
-      let id=ev.target.title
-      api.minicart.template.choices('shop/shopCar/delete',{id:id}).then(succ=>{
-        if(succ.status==200){
-          alert(succ.msg)
-          window.location.reload()
-        }else if(succ.status==400){
-          alert(succ.msg)
-        }
-      }).catch(err=>{})
+      let id = ev.target.title;
+      api.minicart.template
+        .choices("shop/shopCar/delete", { id: id })
+        .then(succ => {
+          if (succ.status == 200) {
+            alert(succ.msg);
+            window.location.reload();
+          } else if (succ.status == 400) {
+            alert(succ.msg);
+          }
+        })
+        .catch(err => {});
     }
   }
 };

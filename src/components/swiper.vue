@@ -61,6 +61,7 @@ export default {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  height: 300px
 }
 .swiper-pagination-bullet{
     width: 25px;

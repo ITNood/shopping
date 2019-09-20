@@ -5,14 +5,15 @@
       <div class="choose">
         <!--有地址-->
         <div
-          v-if="address&&mobile"
+          v-if="lsitaddress.address&&lsitaddress.mobile"
           @click="selectAddress()"
         >
           <div class="contact">
-            <div class="username">收货人：{{username}}</div>
-            <div class="mobile">{{mobile}}</div>
+            <div class="username">收货人：{{lsitaddress.call}}</div>
+            <div class="mobile">{{lsitaddress.mobile}}</div>
           </div>
-          <div class="address"><i class="el-icon-location"></i>{{address}}</div>
+          <div class="address"><i class="el-icon-location"></i>{{lsitaddress.region}}{{lsitaddress.address}}</div>
+          <div style="display:none">{{lsitaddress.id}}</div>
         </div>
         <!--没有地址-->
         <div
@@ -30,11 +31,11 @@
       >
         <div class="shoper clear">
           <!--全选-->
-          <span style="font-weight:normal">商家：{{item.title}}</span>
+          <span style="font-weight:normal">商家：{{item.name}}</span>
         </div>
         <ul class="shopList">
           <li
-            v-for="(todo,index) in item.todos"
+            v-for="(todo,index) in item.shop"
             :key="index"
           >
             <!--商品图片-->
@@ -42,8 +43,8 @@
               :to="{path:'/details',query:{id:todo.id}}"
               style="margin-left:0"
             >
-            <!-- <img :src="todo.img"> -->
-            <el-image :src="todo.img">
+              <!-- <img :src="todo.img"> -->
+              <el-image :src="todo.img">
                 <div
                   slot="error"
                   class="image-slot"
@@ -55,20 +56,21 @@
             <div class="shopRight">
               <!--商品名称-->
               <div class="shopName">
-                <router-link :to="{path:'/details',query:{id:todo.id}}">{{todo.title}}</router-link>
+                <router-link :to="{path:'/details',query:{id:todo.id}}">{{todo.name}}</router-link>
               </div>
+              <div style="display:none">{{todo.item_id}}</div>
               <!--属性-->
               <div class="quality">
                 <span
-                  v-for="(quality,index) in todo.lists"
+                  v-for="(quality,index) in todo.item"
                   :key="index"
-                >{{quality.name}}:{{quality.nature}}</span>
+                >{{quality.name}}:{{quality.val}}</span>
               </div>
               <!--价格、数量选择-->
               <div class="priceNumber">
                 <span>￥{{todo.price}}</span>
                 <el-input-number
-                  v-model="todo.num"
+                  v-model="todo.number"
                   :min="1"
                   size="mini"
                   class="addNumber"
@@ -80,7 +82,7 @@
       </div>
       <!--end-->
       <!--商品数量-->
-      <div class="shopTotal">共{{number}}件商品 小计：￥{{price}}</div>
+      <div class="shopTotal">共{{number}}件商品 小计：￥{{total}}</div>
       <!--订单详情-->
       <ul class="orderText">
         <!-- <li>订单编号<span>{{orderNo}}</span></li> -->
@@ -88,11 +90,16 @@
         <li>可用优惠<span
             style="color:#d10216;font-weight:600"
             @click="selectCoupon()"
+            v-if="coupon"
           >- {{coupon}}
             <i
               class="el-icon-arrow-right"
               style="color:#000"
             ></i></span>
+          <span
+            style="color:#d10216;font-size:12px;"
+            v-else
+          >不可用</span>
         </li>
         <li>运费<span>{{fare}}</span></li>
         <li>需支付<span style="color:#d10216;font-weight:600">￥ {{total}}</span></li>
@@ -116,6 +123,7 @@
       title="选择优惠券"
       class="couponDrawer"
       :wrapperClosable="false"
+      id="slectCoupon"
     >
       <div class="couponlist">
         <ul class="coupons">
@@ -157,12 +165,14 @@
             v-for="(item,index) in lists"
             :key="index"
             style="padding:5px 20px;"
+            @click="add($event)"
+            :title="item.id"
           >
             <div class="contact">
-              <div class="username">收货人：{{username}}</div>
-              <div class="mobile">{{mobile}}</div>
+              <div class="username">收货人：{{item.username}}</div>
+              <div class="mobile">{{item.mobile}}</div>
             </div>
-            <div class="address"><i class="el-icon-location"></i>{{address}}</div>
+            <div class="address"><i class="el-icon-location"></i>{{item.address}}</div>
           </li>
         </ul>
       </div>
@@ -171,98 +181,92 @@
 </template>
 
 <script>
+import api from '../API/index'
 import Header from "../components/header";
 export default {
   components: { Header },
   data() {
     return {
       msg: "提交订单",
-      username: "张三",
-      mobile: 13800138000,
-      address: "广东省深圳市南山区南山村二十巷8号101",
+      lsitaddress: {},
       selected: "1",
-      id: 1,
       number: 2,
-      price: "200.00",
       //orderNo: 123456789,
-      date: "2019/09/09",
-      coupon: 50,
-      fare: "包邮",
-      total: "200.00",
+      date: "",
+      coupon: "",
+      fare: "",
+      total: "",
       coupons: false, //选择优惠券
       addressList: false,
-      items: [
-        {
-          title: "店铺",
-          todos: [
-            {
-              num: 1,
-              id: 2,
-              img: require("../assets/image/shop.jpg"),
-              title: "商品名称",
-              price: "100.00",
-              lists: [
-                { name: "颜色", nature: "白色" },
-                { name: "规格", nature: "自动" }
-              ]
-            },
-            {
-              num: 1,
-              id: 2,
-              img: require("../assets/image/shop.jpg"),
-              title: "商品名称",
-              price: "100.00",
-              lists: [
-                { name: "颜色", nature: "白色" },
-                { name: "规格", nature: "自动" }
-              ]
-            }
-          ]
-        }
-      ],
-      todos: [
-        {
-          name: "天使鹭优惠券",
-          amount: "50",
-          text: "满300减50元",
-          id: 2,
-          date: "2019.12.13 12:00",
-          user: "全类品",
-          url: "",
-          state: 1
-        },
-        {
-          name: "天使鹭优惠券",
-          amount: "50",
-          text: "满300减50元",
-          id: 2,
-          date: "2019.12.13 12:00",
-          user: "去使用",
-          url: "",
-          state: 2
-        }
-      ],
-      lists: [
-        {
-          username: "张三",
-          mobile: 13800138000,
-          address: "广东省深圳市南山区南山村二十巷8号101",
-          id: 1
-        },
-        {
-          username: "张三",
-          mobile: 13800138000,
-          address: "广东省深圳市南山区南山村二十巷8号101",
-          id: 2
-        }
-      ]
+      items: [],
+      todos: [],
+      lists: [] //地址
     };
   },
+  updated() {
+    //价格计算
+    let allprice = [];
+    this.items.map(item => {
+      item.shop.map(goods => {
+        allprice.push(goods.price * goods.number);
+      });
+    });
+    //console.log(allprice)
+    if (allprice.length == 0) {
+      this.total = 0;
+    } else {
+      this.total = allprice.reduce((a, b) => {
+        return a + b;
+      });
+    }
+  },
+  mounted() {
+    this.getdata();
+  },
   methods: {
+    getdata() {
+      let data = window.localStorage.getItem("data");
+      let result = JSON.parse(data); //字符串转对象
+      //console.log(result);
+      let isadd = false;
+      let address = {};
+      if (result) {
+        this.items = this.items.concat(result.data);
+        this.lists = this.lists.concat(result.address);
+        this.lists.map(list => {
+          //判断是否有默认地址，没有就设置第一条为默认地址
+          if (list.default == 1) {
+            address = list;
+            isadd = true;
+          }
+        });
+        //console.log(address)
+        if (isadd == true) {
+          // console.log(1);
+          this.lsitaddress = address;
+        } else {
+          this.lsitaddress = this.lists[0];
+        }
+        this.date = result.date;
+        this.fare = result.freight;
+        this.total = (Math.floor(result.amount * 100) / 100).toFixed(2);
+        //商品数量
+        this.items.map(list => {
+          list.shop.map(goods => {
+            //console.log(goods)
+          });
+        });
+      }
+    },
     selectAddress() {
       //选择地址
       console.log("选择地址");
       this.addressList = true;
+    },
+    add(ev){
+      console.log(ev)
+      let id=ev.target.parentNode.title
+      console.log(id)
     },
     //选择优惠券
     selectCoupon() {
@@ -274,8 +278,34 @@ export default {
       console.log("取消订单");
     },
     //提交订单
+    //goods_id  item_id shop_id number数组
+    //多个的话是什么格式
     submit() {
-      console.log("提交订单");
+      let goodslist = [];
+      this.items.map(item => {
+        item.shop.map(good => {
+          let goods = {};
+          goods.goods_id = good.goods_id;
+          goods.shop_id = good.shop_id;
+          goods.item_id = good.item_id;
+          goods.number = good.number;
+          goodslist.push(goods);
+        });
+      });
+      //console.log(goodslist);
+      
+      let id=this.lsitaddress.id
+     // console.log(id)
+      api.minicart.template.choices('shop/payment/createOrder',{shoper:goodslist,id:id}).then(succ=>{
+        if(succ.status==200){
+          window.localStorage.setItem('result',JSON.stringify(succ.res))
+          this.$router.push('/payment')
+        }else if(succ.status==400){
+          alert(succ.msg)
+        }
+      }).catch(err=>{
+
+      })
     }
   }
 };

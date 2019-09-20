@@ -45,7 +45,7 @@
       </div>
       <!--店铺-->
       <div class="store">
-        <router-link :to="{path:'/shop',query:{id:shopid}}">
+        <router-link :to="{path:'/details',query:{id:shopid}}">
           <div class="storeLeft">
             <img :src="shopImg">
             <span :title="shopName">{{shopName}}</span>
@@ -210,10 +210,8 @@ export default {
         })
         .catch(err => {});
     },
-    //属性
+    //选择属性获取单价
     shuxing(ev) {
-      //console.log(ev);
-      // console.log(this.radio)
       let id = this.$route.query.id;
       api.minicart.template.choices("shop/goods/getGoodsPrice", { id: id, item: this.radio })
         .then(succ => {
@@ -242,6 +240,7 @@ export default {
     },
     submit() {
       let id = this.$route.query.id;
+      //if(i==0)加入购物车else购买商品
       if (this.i == 0) {
         api.minicart.template
           .choices("shop/shopCar/insert", {
@@ -259,6 +258,17 @@ export default {
           })
           .catch(err => {});
       } else {
+        api.minicart.template.choices('shop/createOrder/index',{id:id,number:this.number,item:this.radio,shop_id:this.shopid}).then(succ=>{
+          if(succ.status==200){
+           // console.log(succ.res)
+            window.localStorage.setItem('data',JSON.stringify(succ.res))
+            this.$router.push('/subOrder')
+          }else if(succ.status==400){
+            alert(succ.msg)
+          }
+        }).catch(err=>{
+
+        })
       }
     },
     share() {

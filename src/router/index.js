@@ -19,6 +19,7 @@ export default new Router({
         return import('../views/car')
       }
     },
+    //限时打折
     {
       path: '/discount',
       name: 'discount',
@@ -26,6 +27,7 @@ export default new Router({
         return import('../views/discount')
       }
     },
+    //优惠券
     {
       path: '/coupon',
       name: 'coupon',
@@ -40,6 +42,7 @@ export default new Router({
         return import('../views/news')
       }
     },
+    //供应链
     {
       path: '/supply',
       name: 'supply',
@@ -103,6 +106,7 @@ export default new Router({
         return import('../views/paySuccess')
       }
     },
+    //商品分类
     {
       path: '/shopClassify',
       name: 'shopClassify',
@@ -110,6 +114,7 @@ export default new Router({
         return import('../views/shopClassify')
       }
     },
+    //商品列表
     {
       path: '/product',
       name: 'product',
@@ -122,6 +127,13 @@ export default new Router({
       name: 'like',
       component: () => {
         return import('../views/like')
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => {
+        return import('../views/login')
       }
     }
   ]

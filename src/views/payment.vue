@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import api from '../API/index'
 import Header from "../components/header";
 import Pin from "../components/pin";
 import jsBridge from "../assets/js/jsbridge-mini";
@@ -41,11 +42,24 @@ export default {
     return {
       msg: "支付方式",
       radio: "1",
-      total: "200.00",
-      show: true
+      total: "0.00",
+      show: true,
+      id:''
     };
   },
+  mounted() {
+    this.getdata()
+  },
   methods: {
+    getdata(){
+      let data=localStorage.getItem('result')
+      let result=JSON.parse(data)
+      console.log(result)
+      if(result){
+        this.total=result.total_price
+        this.id=result.order_id
+      }
+    },
     selectRadio() {
       console.log(this.radio);
     },
@@ -77,7 +91,13 @@ export default {
       }
     },
     submit(pwd) {
-        
+        api.minicart.template.choices('shop/payment/payOrder',{order:this.id,password:pwd,type:this.radio}).then(succ=>{
+          if(succ.status==200){
+            this.$router.push('/paySuccess')
+          }else if(succ.status==400){
+            alert(succ.msg)
+          }
+        }).catch(err=>{})
     }
   }
 };

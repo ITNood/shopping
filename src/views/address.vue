@@ -111,21 +111,20 @@ export default {
                 isadd=true
               }
             });
-            console.log(address)
+            //console.log(address)
             if(isadd==true){
               console.log(1)
                this.lsitaddress=address
             }else{
               this.lsitaddress =this.items[0]
             }
-            console.log(this.lsitaddress)
-
+            //console.log(this.lsitaddress)
           }
         })
         .catch(err => {});
     },
-    del(ev) {
-      console.log(ev);
+    del(ev) {//删除地址
+      //console.log(ev);
       let id = ev.target.title;
       api.minicart.template
         .choices("shop/userAddress/delete", { id: id })
@@ -143,6 +142,7 @@ export default {
           }
         });
     },
+    //编辑地址
     edit(ev) {
       console.log(ev);
       let id = ev.target.title;

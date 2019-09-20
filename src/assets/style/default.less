@@ -5,8 +5,9 @@
     font-size: 12px;
     text-decoration: none;
 }
-.demo-block{
-    background: rgba(255,255,255,.1)
+
+.demo-block {
+    background: rgba(255, 255, 255, .1)
 }
 
 @black: #000;
@@ -215,7 +216,7 @@ li {
     line-height: 30px;
 
     .el-checkbox {
-        margin-right: 15px;
+        margin-right: 8px;
     }
 
     span {
@@ -241,7 +242,7 @@ li {
 
         a {
             width: 100px;
-            margin: 0 15px;
+            margin: 0 8px;
             display: block;
         }
     }
@@ -260,7 +261,7 @@ li {
 
     a {
         display: block;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -360,7 +361,7 @@ li {
 }
 
 .discountList {
-    padding: 20px;
+    padding: 15px;
     overflow: hidden;
 
     ul {
@@ -383,8 +384,7 @@ li {
 }
 
 .discountRight {
-    width: 100%;
-
+    width:calc(100% - 110px);
     h5 {
         font-size: 16px;
         font-weight: 600;
@@ -946,10 +946,12 @@ li {
 .addressList {
     height: calc(100vh - 208px);
     overflow-y: auto;
+
     li {
         padding: 20px;
         margin-bottom: 8px;
-        background: white
+        background: white;
+        display: block
     }
 }
 
@@ -1335,13 +1337,15 @@ li {
     }
 }
 
-
-
-
+#slectCoupon {
+    .el-drawer{
+        background: #f8f8f8;
+    }
+}
 
 /*-------------------------------------------------*/
 
-@media screen and (min-height:667px) and (max-height:736px) {
+@media screen and (min-height:668px) and (max-height:736px) {
     .discountList ul {
         height: calc(100vh - 305px);
     }
