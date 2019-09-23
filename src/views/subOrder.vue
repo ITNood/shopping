@@ -228,8 +228,8 @@ export default {
   },
 
   methods: {
+    //获取商品个数
     goodsnum() {
-      console.log(123)
       let allgoodsnumber = [];
       this.items.map(list => {
         allgoodsnumber.push(list.shop.length);
@@ -237,14 +237,12 @@ export default {
       allgoodsnumber = allgoodsnumber.reduce((a, b) => {
         return a.number + b.number;
       });
-      console.log(allgoodsnumber);
       this.number = allgoodsnumber;
     },
 
     getdata() {
       let data = window.localStorage.getItem("data");
       let result = JSON.parse(data); //字符串转对象
-      //console.log(result);
       let isadd = false;
       let address = {};
       if (result) {
@@ -267,12 +265,6 @@ export default {
         this.date = result.date;
         this.fare = result.freight;
         this.total = (Math.floor(result.amount * 100) / 100).toFixed(2);
-        //商品数量
-        this.items.map(list => {
-          list.shop.map(goods => {
-            //console.log(goods)
-          });
-        });
       }
     },
     selectAddress() {
@@ -281,12 +273,9 @@ export default {
       this.addressList = true;
     },
     add(ev) {
-      // console.log(ev)
       let id = ev.target.parentNode.title;
-      //console.log(id)
       this.lists.map(item => {
         if (item.id == id) {
-          // console.log(item)
           this.lsitaddress = item;
         }
       });

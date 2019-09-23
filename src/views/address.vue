@@ -1,7 +1,10 @@
 <template>
   <div>
     <Header :title="msg" />
-    <div class="layout" style="margin-bottom:0;">
+    <div
+      class="layout"
+      style="margin-bottom:0;"
+    >
       <div class="choose">
         <!--如果没有电话和地址就显示 “还没有地址” -->
         <div v-if="show">
@@ -38,35 +41,35 @@
 
       <!--地址列表-->
       <div style="overflow:hidden">
-      <ul class="addressList">
-        <li
-          v-for="(item,index) in items"
-          :key="index"
-        >
-          <div class="contact">
-            <div class="username">收货人：{{item.call}}</div>
-            <div class="mobile">{{item.mobile}}</div>
-          </div>
-          <div class="address"><i class="el-icon-location"></i>{{item.region}}{{item.address}}</div>
-          <div class="handle">
-            <el-radio label="(index+1)"><span
-                @click="address($event)"
-                :title="item.id"
-              >设置默认地址</span></el-radio>
-            <div class="editDel">
-              <a
-                @click="edit($event)"
-                :title="item.id"
-              ><i class="el-icon-edit"></i>编辑</a>
-              <a><i
-                  class="el-icon-delete"
-                  @click="del($event)"
-                  :title="item.id"
-                ></i>删除</a>
+        <ul class="addressList">
+          <li
+            v-for="(item,index) in items"
+            :key="index"
+          >
+            <div class="contact">
+              <div class="username">收货人：{{item.call}}</div>
+              <div class="mobile">{{item.mobile}}</div>
             </div>
-          </div>
-        </li>
-      </ul>
+            <div class="address"><i class="el-icon-location"></i>{{item.region}}{{item.address}}</div>
+            <div class="handle">
+              <el-radio label="(index+1)"><span
+                  @click="address($event)"
+                  :title="item.id"
+                >设置默认地址</span></el-radio>
+              <div class="editDel">
+                <a
+                  @click="edit($event)"
+                  :title="item.id"
+                ><i class="el-icon-edit"></i>编辑</a>
+                <a><i
+                    class="el-icon-delete"
+                    @click="del($event)"
+                    :title="item.id"
+                  ></i>删除</a>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -83,7 +86,7 @@ export default {
       lsitaddress: {},
       selected: "1",
       items: [],
-      show:false
+      show: false
     };
   },
   mounted() {
@@ -92,54 +95,63 @@ export default {
   methods: {
     getdata() {
       let that = this;
-      let isadd = false
-      let address = {}
+      let isadd = false;
+      let address = {};
       api.minicart.template
         .choices("shop/userAddress/select")
         .then(succ => {
           if (succ.status == 200) {
-            if(succ.res.length>0){
-              this.show=true
-               this.items = this.items.concat(succ.res);
-            }else{
-              this.show=false
+            if (succ.res.length > 0) {
+              this.show = true;
+              this.items = this.items.concat(succ.res);
+            } else {
+              this.show = false;
             }
             this.items.map(list => {
               //判断是否有默认地址，没有就设置第一条为默认地址
               if (list.default == 1) {
                 address = list;
-                isadd=true
+                isadd = true;
               }
             });
             //console.log(address)
-            if(isadd==true){
-              console.log(1)
-               this.lsitaddress=address
-            }else{
-              this.lsitaddress =this.items[0]
+            if (isadd == true) {
+              console.log(1);
+              this.lsitaddress = address;
+            } else {
+              this.lsitaddress = this.items[0];
             }
-            //console.log(this.lsitaddress)
           }
         })
         .catch(err => {});
     },
-    del(ev) {//删除地址
-      //console.log(ev);
-      let id = ev.target.title;
-      api.minicart.template
-        .choices("shop/userAddress/delete", { id: id })
-        .then(succ => {
-          if (succ.status == 200) {
-            this.items.map((list, i) => {
-              if (list.id == id) {
-                console.log(i);
-                this.items.splice(i, 1);
+    //删除地址
+    del(ev) {
+      this.$confirm("您确定要删除该地址？", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          let id = ev.target.title;
+          api.minicart.template
+            .choices("shop/userAddress/delete", { id: id })
+            .then(succ => {
+              if (succ.status == 200) {
+                this.items.map((list, i) => {
+                  if (list.id == id) {
+                    console.log(i);
+                    this.items.splice(i, 1);
+                  }
+                });
+                alert(succ.msg);
+              } else if (succ.status == 400) {
+                alert(succ.msg);
               }
             });
-            alert(succ.msg);
-          } else if (succ.status == 400) {
-            alert(succ.msg);
-          }
+        })
+        .catch(() => {
+          this.$message.warning("取消了删除！");
         });
     },
     //编辑地址
@@ -158,10 +170,8 @@ export default {
         .choices("shop/userAddress/setDefault", { id: id })
         .then(succ => {
           if (succ.status == 200) {
-            // window.location.reload()
             this.items.map((list, i) => {
               if (list.id == id) {
-                //console.log(list);
                 this.lsitaddress = list;
               }
             });

@@ -143,27 +143,29 @@ export default {
         item.data.map(goods => {
           let shopgoods = {};
           if (goods.checked == true) {
-            shopgoods.id =  goods.id;
+            shopgoods.id = goods.id;
             shopgoods.number = goods.goods_number;
             goodsNumber.push(shopgoods);
-            console.log(goodsNumber)
+            console.log(goodsNumber);
           }
         });
       });
       console.log(goodsNumber);
       // console.log(this.todos)
       //提交的参数id(商品id),number(商/品数量),添加到数组里提交，格式 shop:[{id:1,number:1},...]
-      api.minicart.template.choices('shop/createOrder/shopCarCreate',{shop:goodsNumber}).then(succ=>{
-        console.log(succ)
-        //返回值不是你想要的
+      api.minicart.template
+        .choices("shop/createOrder/shopCarCreate", { shop: goodsNumber })
+        .then(succ => {
+          console.log(succ);
+          //返回值不是你想要的
 
-        if(succ.status==200){
-          window.localStorage.setItem('data',JSON.stringify(succ.res))
-          this.$router.push('/subOrder')
-        }else if(succ.status==400){
-          alert(succ.msg)
-        }
-      })
+          if (succ.status == 200) {
+            window.localStorage.setItem("data", JSON.stringify(succ.res));
+            this.$router.push("/subOrder");
+          } else if (succ.status == 400) {
+            alert(succ.msg);
+          }
+        });
     },
 
     getdata() {
@@ -224,18 +226,28 @@ export default {
     //删除
     dele(ev) {
       console.log(ev);
-      let id = ev.target.title;
-      api.minicart.template
-        .choices("shop/shopCar/delete", { id: id })
-        .then(succ => {
-          if (succ.status == 200) {
-            alert(succ.msg);
-            window.location.reload();
-          } else if (succ.status == 400) {
-            alert(succ.msg);
-          }
+      this.$confirm("您确定要删除该商品?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          let id = ev.target.title;
+          api.minicart.template
+            .choices("shop/shopCar/delete", { id: id })
+            .then(succ => {
+              if (succ.status == 200) {
+                alert(succ.msg);
+                window.location.reload();
+              } else if (succ.status == 400) {
+                alert(succ.msg);
+              }
+            })
+            .catch(err => {});
         })
-        .catch(err => {});
+        .catch(() => {
+          this.$message.warning("取消了删除！");
+        });
     }
   }
 };
