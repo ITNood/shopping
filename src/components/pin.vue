@@ -6,12 +6,9 @@
       size="80%"
       id="pin"
     >
-
       <div class="pay-tool">
         <div class="pay-tool-title border-bottom">
-          <span
-            class="icon1 icon-back"
-          ></span>
+          <span class="icon1 icon-back"></span>
         </div>
         <!--密码输入框-->
         <div class="pay-tool-content">
@@ -75,7 +72,7 @@ export default {
     },
     //删除密码
     delHandle() {
-      if (this.password.length <= 0) return false;
+      if (this.password.length <= 0) {return false;}
       this.password.shift();
     },
     ajaxData() {

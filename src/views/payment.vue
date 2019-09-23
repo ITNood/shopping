@@ -8,7 +8,6 @@
           @change="selectRadio()"
         >
           <el-radio label="1"><span class="sum aa"></span>余额支付</el-radio>
-
           <el-radio label="2"><span class="wechat aa"></span>微信支付</el-radio>
         </el-radio-group>
       </div>
@@ -91,6 +90,7 @@ export default {
       }
     },
     submit(pwd) {
+        //console.log(pwd)
         api.minicart.template.choices('shop/payment/payOrder',{order:this.id,password:pwd,type:this.radio}).then(succ=>{
           if(succ.status==200){
             this.$router.push('/paySuccess')

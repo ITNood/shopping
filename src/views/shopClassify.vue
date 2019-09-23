@@ -27,7 +27,6 @@
               v-for="(list,index) in item.son"
               :key="index"
             >
-              <!-- <img :src="list.img"> -->
               <el-image :src="list.img">
                 <div
                   slot="error"

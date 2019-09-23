@@ -5,7 +5,7 @@
       <div class="choose">
         <!--有地址-->
         <div
-          v-if="lsitaddress.address&&lsitaddress.mobile"
+          v-if="lsitaddress.region&&lsitaddress.address&&lsitaddress.mobile"
           @click="selectAddress()"
         >
           <div class="contact clear">
@@ -239,10 +239,10 @@ export default {
       });
       this.number = allgoodsnumber;
     },
-
     getdata() {
       let data = window.localStorage.getItem("data");
       let result = JSON.parse(data); //字符串转对象
+      console.log(result);
       let isadd = false;
       let address = {};
       if (result) {
@@ -257,7 +257,6 @@ export default {
         });
         //console.log(address)
         if (isadd == true) {
-          // console.log(1);
           this.lsitaddress = address;
         } else {
           this.lsitaddress = this.lists[0];
@@ -269,7 +268,7 @@ export default {
     },
     selectAddress() {
       //选择地址
-      console.log("选择地址");
+      //console.log("选择地址");
       this.addressList = true;
     },
     add(ev) {
