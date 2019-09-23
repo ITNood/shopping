@@ -8,7 +8,7 @@
           v-if="lsitaddress.address&&lsitaddress.mobile"
           @click="selectAddress()"
         >
-          <div class="contact">
+          <div class="contact clear">
             <div class="username">收货人：{{lsitaddress.call}}</div>
             <div class="mobile">{{lsitaddress.mobile}}</div>
           </div>
@@ -160,19 +160,19 @@
       title="收货地址"
     >
       <div styele="overflow:hidden">
-        <ul class="addressList coupons">
+        <ul class="addressList coupons"  
+        >
           <li
             v-for="(item,index) in lists"
             :key="index"
             style="padding:5px 20px;"
-            @click="add($event)"
             :title="item.id"
+            @click="add($event)"
           >
-            <div class="contact">
-              <div class="username">收货人：{{item.username}}</div>
-              <div class="mobile">{{item.mobile}}</div>
+            <div :title="item.id" class="contact clear">
+              <div  class="username">收货人：{{item.call}}<span class="mobile">{{item.mobile}}</span></div>
             </div>
-            <div class="address"><i class="el-icon-location"></i>{{item.address}}</div>
+            <div class="address"><i class="el-icon-location"></i>{{item.region}}{{item.address}}</div>
           </li>
         </ul>
       </div>
@@ -264,9 +264,16 @@ export default {
       this.addressList = true;
     },
     add(ev){
-      console.log(ev)
+     // console.log(ev)
       let id=ev.target.parentNode.title
-      console.log(id)
+      //console.log(id)
+      this.lists.map(item=>{
+        if(item.id==id){
+         // console.log(item)
+          this.lsitaddress=item
+        }
+      })
+      this.addressList=false
     },
     //选择优惠券
     selectCoupon() {
@@ -275,11 +282,10 @@ export default {
     },
     //取消订单
     remove() {
-      console.log("取消订单");
+      //console.log("取消订单");
     },
     //提交订单
     //goods_id  item_id shop_id number数组
-    //多个的话是什么格式
     submit() {
       let goodslist = [];
       this.items.map(item => {
@@ -292,10 +298,8 @@ export default {
           goodslist.push(goods);
         });
       });
-      //console.log(goodslist);
-      
       let id=this.lsitaddress.id
-     // console.log(id)
+     //console.log(id)
       api.minicart.template.choices('shop/payment/createOrder',{shoper:goodslist,id:id}).then(succ=>{
         if(succ.status==200){
           window.localStorage.setItem('result',JSON.stringify(succ.res))
