@@ -160,8 +160,7 @@
       title="收货地址"
     >
       <div styele="overflow:hidden">
-        <ul class="addressList coupons"  
-        >
+        <ul class="addressList coupons">
           <li
             v-for="(item,index) in lists"
             :key="index"
@@ -169,8 +168,11 @@
             :title="item.id"
             @click="add($event)"
           >
-            <div :title="item.id" class="contact clear">
-              <div  class="username">收货人：{{item.call}}<span class="mobile">{{item.mobile}}</span></div>
+            <div
+              :title="item.id"
+              class="contact clear"
+            >
+              <div class="username">收货人：{{item.call}}<span class="mobile">{{item.mobile}}</span></div>
             </div>
             <div class="address"><i class="el-icon-location"></i>{{item.region}}{{item.address}}</div>
           </li>
@@ -181,7 +183,7 @@
 </template>
 
 <script>
-import api from '../API/index'
+import api from "../API/index";
 import Header from "../components/header";
 export default {
   components: { Header },
@@ -190,7 +192,7 @@ export default {
       msg: "提交订单",
       lsitaddress: {},
       selected: "1",
-      number: 2,
+      number: "",
       //orderNo: 123456789,
       date: "",
       coupon: "",
@@ -204,6 +206,7 @@ export default {
     };
   },
   updated() {
+    this.goodsnum();
     //价格计算
     let allprice = [];
     this.items.map(item => {
@@ -223,7 +226,21 @@ export default {
   mounted() {
     this.getdata();
   },
+
   methods: {
+    goodsnum() {
+      console.log(123)
+      let allgoodsnumber = [];
+      this.items.map(list => {
+        allgoodsnumber.push(list.shop.length);
+      });
+      allgoodsnumber = allgoodsnumber.reduce((a, b) => {
+        return a.number + b.number;
+      });
+      console.log(allgoodsnumber);
+      this.number = allgoodsnumber;
+    },
+
     getdata() {
       let data = window.localStorage.getItem("data");
       let result = JSON.parse(data); //字符串转对象
@@ -263,17 +280,17 @@ export default {
       console.log("选择地址");
       this.addressList = true;
     },
-    add(ev){
-     // console.log(ev)
-      let id=ev.target.parentNode.title
+    add(ev) {
+      // console.log(ev)
+      let id = ev.target.parentNode.title;
       //console.log(id)
-      this.lists.map(item=>{
-        if(item.id==id){
-         // console.log(item)
-          this.lsitaddress=item
+      this.lists.map(item => {
+        if (item.id == id) {
+          // console.log(item)
+          this.lsitaddress = item;
         }
-      })
-      this.addressList=false
+      });
+      this.addressList = false;
     },
     //选择优惠券
     selectCoupon() {
@@ -282,7 +299,8 @@ export default {
     },
     //取消订单
     remove() {
-      //console.log("取消订单");
+      console.log("取消订单");
+      this.$router.push("/");
     },
     //提交订单
     //goods_id  item_id shop_id number数组
@@ -298,18 +316,19 @@ export default {
           goodslist.push(goods);
         });
       });
-      let id=this.lsitaddress.id
-     //console.log(id)
-      api.minicart.template.choices('shop/payment/createOrder',{shoper:goodslist,id:id}).then(succ=>{
-        if(succ.status==200){
-          window.localStorage.setItem('result',JSON.stringify(succ.res))
-          this.$router.push('/payment')
-        }else if(succ.status==400){
-          alert(succ.msg)
-        }
-      }).catch(err=>{
-
-      })
+      let id = this.lsitaddress.id;
+      //console.log(id)
+      api.minicart.template
+        .choices("shop/payment/createOrder", { shoper: goodslist, id: id })
+        .then(succ => {
+          if (succ.status == 200) {
+            window.localStorage.setItem("result", JSON.stringify(succ.res));
+            this.$router.push("/payment");
+          } else if (succ.status == 400) {
+            alert(succ.msg);
+          }
+        })
+        .catch(err => {});
     }
   }
 };
