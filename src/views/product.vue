@@ -20,7 +20,10 @@
             v-infinite-scroll="load"
             infinite-scroll-disabled="disabled"
           >
-            <li v-for="(item,index) in items" :key="index">
+            <li
+              v-for="(item,index) in items"
+              :key="index"
+            >
               <router-link :to="{path:'/details',query:{id:item.id}}">
                 <!-- <img :src="item.img"> -->
                 <el-image :src="item.pic">
@@ -55,7 +58,7 @@
 </template>
 
 <script>
-import api from '../API/index'
+import api from "../API/index";
 import Search from "../components/search";
 import Header from "../components/header";
 export default {
@@ -65,47 +68,62 @@ export default {
       msg: "",
       isTrue: true,
       fixed: true,
-      count:20,
+      count: false,
       loading: false,
-      items:[]
+      items: [],
+      page: 1
     };
   },
   computed: {
     noMore() {
-      return this.count >= this.items.length;
+      return this.count;
     },
     disabled() {
       return this.loading || this.noMore;
     }
   },
-  mounted() {
-    this.getdata()
+  created() {
+    this.getdata();
   },
   methods: {
-    getdata(){
-      let id=this.$route.query.id
-      api.minicart.template.choices('shop/goods/index',{id:id}).then(succ=>{
-        if(succ.status==200){
-          //console.log(111)
-          if(succ.res.goods.length>0){
-            this.items=this.items.concat(succ.res.goods)
+    getdata() {
+      let id = this.$route.query.id;
+      api.minicart.template
+        .choices("shop/goods/index", { id: id })
+        .then(succ => {
+          if (succ.status == 200) {
+            //console.log(111)
+            if (result.res.length == 0 || result.res.length < 20) {
+              this.count = true;
+              this.loading = false;
+            }
+            if (succ.res.goods.length > 0) {
+              this.items = this.items.concat(succ.res.goods);
+            }
+            this.msg = succ.res.catName;
           }
-          this.msg=succ.res.catName
-        }
-      }).catch(err=>{})
+        })
+        .catch(err => {});
     },
     load() {
       this.loading = true;
       setTimeout(() => {
-        this.page++
-        api.minicart.template.choices('shop/goods/index',{id:id,page:this.page}).then(succ=>{
-        if(succ.status==200){
-          //console.log(111)
-          if(succ.res.goods.length>0){
-            this.items=this.items.concat(succ.res.goods)
-          }
-        }
-      }).catch(err=>{})
+        this.page++;
+        api.minicart.template
+          .choices("shop/goods/index", { id: id, page: this.page })
+          .then(succ => {
+            if (succ.status == 200) {
+              //console.log(111)
+              if (result.res.length == 0 || result.res.length < 20) {
+                this.count = true;
+                this.loading = false;
+              }
+              if (succ.res.goods.length > 0) {
+                this.items = this.items.concat(succ.res.goods);
+              }
+            }
+          })
+          .catch(err => {});
       }, 1000);
     }
   }

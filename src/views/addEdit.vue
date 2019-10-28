@@ -37,7 +37,6 @@
             :props="{ value: 'id'}"
             :options="options"
             @change="handleChange"
-            :clearable='true'
             v-model="value"
           ></el-cascader>
         </el-form-item>
@@ -94,7 +93,7 @@ export default {
         mobile: "",
         region: Array,
         address: "",
-        id:''
+        id: ""
       },
       rule: {
         call: [
@@ -110,7 +109,16 @@ export default {
       }
     };
   },
-
+  mounted() {
+    this.getaddress();
+    this.getEdit();
+    let id = this.$route.query.id;
+    if (id) {
+      this.show = false;
+    } else {
+      this.show = true;
+    }
+  },
   methods: {
     //省市区
     getaddress() {
@@ -133,7 +141,7 @@ export default {
             this.form.call = succ.res.call;
             this.form.mobile = succ.res.mobile;
             this.value = succ.res.select;
-            this.form.address=succ.res.address
+            this.form.address = succ.res.address;
           }
         })
         .catch(err => {});
@@ -145,7 +153,6 @@ export default {
     },
     //添加地址
     submit() {
-        
       let data = this.form;
       api.minicart.template
         .choices("shop/userAddress/insert", data)
@@ -162,11 +169,11 @@ export default {
     },
     //编辑地址
     submit1() {
-        let id=this.$route.query.id
-        this.form.id=id
-        let data=this.form
+      let id = this.$route.query.id;
+      this.form.id = id;
+      let data = this.form;
       api.minicart.template
-        .choices("shop/userAddress/update",data)
+        .choices("shop/userAddress/update", data)
         .then(succ => {
           if (succ.status == 200) {
             alert(succ.msg);
@@ -176,16 +183,6 @@ export default {
           }
         })
         .catch(err => {});
-    }
-  },
-  mounted() {
-    this.getaddress();
-    this.getEdit();
-    let id = this.$route.query.id;
-    if (id) {
-      this.show = false;
-    } else {
-      this.show = true;
     }
   }
 };

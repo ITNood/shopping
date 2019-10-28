@@ -135,6 +135,139 @@ export default new Router({
       component: () => {
         return import('../views/login')
       }
+    },
+    {
+      path: '/form/graduationCard',
+      name: 'graduationCard',
+      component: () => {
+        return import('../views/form/graduationCard')
+      }
+    },
+    {
+      path: '/form/driver',
+      name: 'driver',
+      component: () => {
+        return import('../views/form/driver')
+      }
+    },
+    {
+      path: '/form/license',
+      name: 'license',
+      component: () => {
+        return import('../views/form/license')
+      }
+    },
+    {
+      path: '/form/licensePage',
+      name: 'licensePage',
+      component: () => {
+        return import('../views/form/licensePage')
+      }
+    },
+    {
+      path: '/form/insurance',
+      name: 'insurance',
+      component: () => {
+        return import('../views/form/insurance')
+      }
+    },
+    {
+      path: '/form/traffic',
+      name: 'traffic',
+      component: () => {
+        return import('../views/form/traffic')
+      }
+    },
+    {
+      path: '/license/animal',
+      name: 'animal',
+      component: () => {
+        return import('../views/license/animal')
+      }
+    },
+    {
+      path: '/license/drugs',
+      name: 'drugs',
+      component: () => {
+        return import('../views/license/drugs')
+      }
+    },
+    {
+      path: '/license/logistics',
+      name: 'logistics',
+      component: () => {
+        return import('../views/license/logistics')
+      }
+    },
+    {
+      path: '/license/drugsDetection',
+      name: 'drugsDetection',
+      component: () => {
+        return import('../views/license/drugsDetection')
+      }
+    },
+    {
+      path: '/license/feed',
+      name: 'feed',
+      component: () => {
+        return import('../views/license/feed')
+      }
+    },
+    {
+      path: '/license/sewage',
+      name: 'sewage',
+      component: () => {
+        return import('../views/license/sewage')
+      }
+    },
+    {
+      path: '/industrial/index',
+      name: '/industrial',
+      component: () => {
+        return import('../views/industrial/index')
+      }
+    },
+    {
+      path: '/industrial/impower',
+      name: 'impower',
+      component: () => {
+        return import('../views/industrial/impower')
+      }
+    },
+    {
+      path: '/industrial/quality',
+      name: 'quality',
+      component: () => {
+        return import('../views/industrial/quality')
+      }
+    },
+    {
+      path: '/industrial/inspector',
+      name: 'inspector',
+      component: () => {
+        return import('../views/industrial/inspector')
+      }
+    },
+    {
+      path: '/industrial/business',
+      name: 'business',
+      component: () => {
+        return import('../views/industrial/business')
+      }
+    },
+    {
+      path: '/industrial/bank',
+      name: 'bank',
+      component: () => {
+        return import('../views/industrial/bank')
+      }
+    },
+    {
+      path: '/form/idCard',
+      name: 'idCard',
+      component: () => {
+        return import('../views/form/idCard')
+      }
     }
   ]
 })
