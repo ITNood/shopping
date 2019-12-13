@@ -3,7 +3,7 @@
     <Header :title="msg" />
     <div class="layout">
       <div class="success">
-        <img src="../assets/image/true.png">
+        <img src="../../assets/image/true.png">
         <h5>￥{{total}}</h5>
         <p>支付成功</p>
         <div class="sucees_btn">
@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import api from '../API/index'
-import Header from "../components/header";
+import api from '../../API/index'
+import Header from "../../components/header";
 export default {
   components: { Header },
   data() {

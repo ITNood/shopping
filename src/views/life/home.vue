@@ -118,11 +118,11 @@
 </template>
 
 <script>
-import api from "../API/index";
-import Search from "../components/search";
-import Swiper from "../components/swiper";
-import Mune from "../components/mune";
-import Footer from "../components/bottom";
+import api from "../../API/index";
+import Search from "../../components/search";
+import Swiper from "../../components/swiper";
+import Mune from "../../components/mune";
+import Footer from "../../components/bottom";
 export default {
   components: { Search, Swiper, Mune, Footer },
   data() {

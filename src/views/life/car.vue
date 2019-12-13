@@ -92,8 +92,8 @@
 </template>
 
 <script>
-import api from "../API/index";
-import Header from "../components/header";
+import api from "../../API/index";
+import Header from "../../components/header";
 export default {
   components: { Header },
   data() {

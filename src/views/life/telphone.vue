@@ -5,11 +5,12 @@
 </template>
 
 <script>
-import Footer from "../components/bottom";
+import Footer from "../../components/bottom";
 export default {
   components: { Footer },
   data() {
     return {
+        
     };
   }
 };

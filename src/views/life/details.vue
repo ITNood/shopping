@@ -154,11 +154,11 @@
 </template>
 
 <script>
-import api from "../API/index";
-import Header from "../components/header";
-import Swiper from "../components/swiper";
-import jsBridge from "../assets/js/jsbridge-mini";
-import Drawer from "../components/drawer";
+import api from "../../API/index";
+import Header from "../../components/header";
+import Swiper from "../../components/swiper";
+import jsBridge from "../../assets/js/jsbridge-mini";
+import Drawer from "../../components/drawer";
 export default {
   components: { Header, Swiper, Drawer },
   data() {

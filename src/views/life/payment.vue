@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import api from '../API/index'
-import Header from "../components/header";
-import Pin from "../components/pin";
-import jsBridge from "../assets/js/jsbridge-mini";
+import api from '../../API/index'
+import Header from "../../components/header";
+import Pin from "../../components/pin";
+import jsBridge from "../../assets/js/jsbridge-mini";
 export default {
   components: { Header, Pin },
   data() {

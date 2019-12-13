@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import api from '../API/index'
-import Search from "../components/search";
-import Header from "../components/header";
+import api from '../../API/index'
+import Search from "../../components/search";
+import Header from "../../components/header";
 export default {
   components: { Header, Search },
   data() {

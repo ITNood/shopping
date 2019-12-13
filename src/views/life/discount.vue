@@ -40,15 +40,15 @@
 </template>
 
 <script>
-import api from '../API/index'
-import Header from "../components/header";
-import Timer from "../components/time";
+import api from '../../API/index'
+import Header from "../../components/header";
+import Timer from "../../components/time";
 export default {
   components: { Header, Timer },
   data() {
     return {
       msg: "限时打折",
-      banner: require("../assets/image/discount.jpg"),
+      banner: require("../../assets/image/discount.jpg"),
       items: []
     };
   },
