@@ -4,7 +4,6 @@
     <div class="layout" style="margin-bottom:0">
         <div class="formlist">
             <el-form :model="form" label-width="100px">
-                
                 <el-form-item prop="number" label="姓名">
                     <el-input v-model="form.number" placeholder="请输入姓名"></el-input>
                 </el-form-item>
