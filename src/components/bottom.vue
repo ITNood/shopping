@@ -1,7 +1,7 @@
 <template>
   <el-footer id="foot" height="60px">
       <router-link active-class="active" :to="item.url" v-for="(item,index) in items" :key="index">
-          <i :class="item.icon"></i>
+          <i :class="item.icon" class="icon iconfont"></i>
           <p>{{item.text}}</p>
       </router-link>
   </el-footer>
@@ -13,11 +13,11 @@ export default {
   data() {
     return {
         items:[
-            {url:'/',icon:'el-icon-user',text:'生活'},
-            {url:'/news',icon:'el-icon-user',text:'消息'},
-            {url:'/supply',icon:'el-icon-user',text:'供应链'},
-            {url:'/telphone',icon:'el-icon-user',text:'通讯录'},
-            {url:'/my',icon:'el-icon-user',text:'我'}
+            {url:'/',icon:'icon-cc-home',text:'生活'},
+            {url:'/news',icon:'icon-news',text:'消息'},
+            {url:'/supply',icon:'icon-fenleihuaban',text:'供应链'},
+            {url:'/telphone',icon:'icon-tongxunlu',text:'通讯录'},
+            {url:'/my/index',icon:'icon-wo',text:'我'}
         ]
     };
   }

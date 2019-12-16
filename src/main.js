@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'swiper/dist/css/swiper.min.css'
 import './assets/style/default.less'
 import vueiInfinite from 'vue-infinite-scroll'
+import './assets/fonts/iconfont.css'
 
 Vue.use(vueiInfinite)
 Vue.use(ElementUI)
