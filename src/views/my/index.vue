@@ -8,7 +8,7 @@
     <div class="layout">
       <div class="avatar">
         <div class="avatarSrc">
-          <router-link to="/my/mynews/index">
+          <router-link to="/my/mynews/mynews">
             <el-avatar
               shape="square"
               :size="50"
@@ -108,7 +108,7 @@ export default {
         { url: "", img: require("../../assets/image/my_2.png"), text: "钱包" },
         { url: "", img: require("../../assets/image/my_3.png"), text: "入驻" },
         {
-          url: "/my/seted/index",
+          url: "/my/seted/set",
           img: require("../../assets/image/my_4.png"),
           text: "设置"
         },

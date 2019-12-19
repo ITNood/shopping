@@ -1658,6 +1658,32 @@ li {
     }
 }
 
+.setlist{
+    background: @white;
+    padding: 0 15px;
+    a{
+        display: flex;
+        color: @black;
+        position: relative;
+        justify-content: left;
+        justify-items: center;
+        border-bottom: 1px solid @border;
+        padding: 15px 0;
+        img{
+            width: 25px;
+            margin-right: 10px;
+        }
+        i{
+            right: 0;
+            position: absolute;
+            top: 15px;
+            line-height: 35px;
+        }
+        p{
+            line-height: 25px;
+        }
+    }
+}
 /*-------------------------------------------------*/
 
 @media screen and (min-height:668px) and (max-height:736px) {

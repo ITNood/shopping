@@ -156,18 +156,18 @@ export default new Router({
     },
     //个人信息
     {
-      path: '/my/mynews/index',
+      path: '/my/mynews/mynews',
       name: 'mynews',
       component: () => {
-        return import('../views/my/mynews/index')
+        return import('../views/my/mynews/mynews')
       }
     },
     //设置
     {
-      path: '/my/seted/index',
-      name: 'seted',
+      path: '/my/seted/set',
+      name: 'set',
       component: () => {
-        return import('../views/my/seted/index')
+        return import('../views/my/seted/set')
       }
     }
   ]
