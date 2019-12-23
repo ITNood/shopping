@@ -25,7 +25,7 @@ export default {
       msg: "设置",
       icon: "el-icon-arrow-left",
       items:[
-        {url:'',img:require('../../../assets/image/set1.png'),text:'账号安全'},
+        {url:'/my/seted/accountSecurity/index',img:require('../../../assets/image/set1.png'),text:'账号安全'},
         {url:'',img:require('../../../assets/image/set2.png'),text:'隐私管理'},
         {url:'',img:require('../../../assets/image/set3.png'),text:'投诉建议'},
         {url:'',img:require('../../../assets/image/set4.png'),text:'清除缓存'},

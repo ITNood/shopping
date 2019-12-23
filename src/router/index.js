@@ -169,6 +169,38 @@ export default new Router({
       component: () => {
         return import('../views/my/seted/set')
       }
+    },
+    //账号安全
+    {
+      path: '/my/seted/accountSecurity/index',
+      name: 'security',
+      component: () => {
+        return import('../views/my/seted/accountSecurity/index')
+      }
+    },
+    //邮箱认证
+    {
+      path: '/my/seted/accountSecurity/email',
+      name: 'email',
+      component: () => {
+        return import('../views/my/seted/accountSecurity/email')
+      }
+    },
+    //手机绑定
+    {
+      path: '/my/seted/accountSecurity/phone',
+      name: 'phone',
+      component: () => {
+        return import('../views/my/seted/accountSecurity/phone')
+      }
+    },
+    //密码设置
+    {
+      path: '/my/seted/accountSecurity/password',
+      name: 'password',
+      component: () => {
+        return import('../views/my/seted/accountSecurity/password')
+      }
     }
   ]
 })

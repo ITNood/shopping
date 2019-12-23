@@ -1658,10 +1658,11 @@ li {
     }
 }
 
-.setlist{
+.setlist {
     background: @white;
     padding: 0 15px;
-    a{
+
+    a {
         display: flex;
         color: @black;
         position: relative;
@@ -1669,21 +1670,105 @@ li {
         justify-items: center;
         border-bottom: 1px solid @border;
         padding: 15px 0;
-        img{
+
+        img {
             width: 25px;
             margin-right: 10px;
         }
-        i{
+
+        i {
             right: 0;
             position: absolute;
             top: 15px;
             line-height: 35px;
         }
-        p{
+
+        p {
             line-height: 25px;
         }
     }
 }
+
+/*--------------------------accountsecurity-----------------------*/
+.accountlist {
+    padding: 0 15px;
+    padding-top: 15px;
+
+    a {
+        display: block;
+        border-bottom: 1px solid #dedede;
+        position: relative;
+        padding-right: 20px;
+        line-height: 40px;
+        color: @black;
+        margin-bottom: 10px;
+        font-size: 14px;
+
+        i {
+            right: 0;
+            line-height: 40px;
+            top: 0;
+            position: absolute;
+        }
+
+        span {
+            position: absolute;
+            right: 20px;
+            color: #999;
+            font-size: 14px;
+            line-height: 40px;
+            top: 0;
+        }
+    }
+
+}
+
+.elmail {
+    padding: 15px;
+    background: @white;
+
+    .emailAddress {
+        border-bottom: 1px solid #DCDFE6;
+
+        .el-input__inner {
+            border: none;
+        }
+    }
+}
+
+.phoneForm {
+    .el-form-item {
+        position: relative;
+        padding-left: 80px;
+        border-bottom: 1px solid #dedede;
+
+        label {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 14px;
+        }
+
+        .el-select {
+            width: 100%;
+
+        }
+
+        .el-input__inner {
+            border: none;
+        }
+
+        .send {
+            background: @yellow;
+            color: @white;
+            border: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}
+
 /*-------------------------------------------------*/
 
 @media screen and (min-height:668px) and (max-height:736px) {
