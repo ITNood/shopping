@@ -105,7 +105,7 @@ export default {
           img: require("../../assets/image/my_1.png"),
           text: "优惠券"
         },
-        { url: "", img: require("../../assets/image/my_2.png"), text: "钱包" },
+        { url: "/my/wallet/index", img: require("../../assets/image/my_2.png"), text: "钱包" },
         { url: "", img: require("../../assets/image/my_3.png"), text: "入驻" },
         {
           url: "/my/seted/set",

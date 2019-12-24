@@ -201,6 +201,55 @@ export default new Router({
       component: () => {
         return import('../views/my/seted/accountSecurity/password')
       }
+    },
+
+    //钱包
+    {
+      path: '/my/wallet/index',
+      name: 'wallet',
+      component: () => {
+        return import('../views/my/wallet/index')
+      }
+    },
+    //充值
+    {
+      path: '/my/wallet/invest/invest',
+      name: 'invest',
+      component: () => {
+        return import('../views/my/wallet/invest/invest')
+      }
+    },
+    //提现
+    {
+      path: '/my/wallet/cash/cash',
+      name: 'cash',
+      component: () => {
+        return import('../views/my/wallet/cash/cash')
+      }
+    },
+    //明细
+    {
+      path: '/my/wallet/detailed/detailed',
+      name: 'detailed',
+      component: () => {
+        return import('../views/my/wallet/detailed/detailed')
+      }
+    },
+    //毕业证书
+    {
+      path: '/identity/school',
+      name: 'school',
+      component: () => {
+        return import('../views/identity/school')
+      }
+    },
+    //保险
+    {
+      path: '/identity/insure',
+      name: 'insure',
+      component: () => {
+        return import('../views/identity/insure')
+      }
     }
   ]
 })
