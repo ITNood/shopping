@@ -330,6 +330,30 @@ export default new Router({
       component: () => {
         return import('../views/identity/bank')
       }
+    },
+    //工商执照
+    {
+      path: '/identity/business',
+      name: 'business',
+      component: () => {
+        return import('../views/identity/business')
+      }
+    },
+    //授权证书
+    {
+      path: '/identity/empower',
+      name: 'empower',
+      component: () => {
+        return import('../views/identity/empower')
+      }
+    },
+    //营业执照
+    {
+      path: '/identity/license',
+      name: 'license',
+      component: () => {
+        return import('../views/identity/license')
+      }
     }
   ]
 })

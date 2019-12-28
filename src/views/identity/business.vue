@@ -7,66 +7,44 @@
     <div class="layout">
       <div class="elmail">
         <el-form
-          :model="bankForm"
-          ref="bankForm"
+          :model="businessForm"
+          ref="businessForm"
           class="phoneForm"
         >
-          <el-form-item label="银行名称">
-            <el-select
-              v-model="bankForm.name"
-              placeholder="请选择"
-            >
-              <el-option
-                v-for="item in items"
-                :key="item.id"
-                :value="item.id"
-                :label="item.name"
-              ></el-option>
-            </el-select>
+          <el-form-item
+            prop="name"
+            label="企业名称"
+          >
+            <el-input
+              v-model="businessForm.name"
+              placeholder="请输入企业名称"
+            ></el-input>
           </el-form-item>
           <el-form-item
             prop="number"
             label="企业注册号"
           >
             <el-input
-              v-model="bankForm.number"
+              v-model="businessForm.number"
               placeholder="请输入企业注册号"
             ></el-input>
           </el-form-item>
           <el-form-item
-            prop="account"
-            label="对工账号"
+            prop="username"
+            label="法人名称"
           >
             <el-input
-              v-model="bankForm.account"
-              placeholder="请输入对工账号"
+              v-model="businessForm.username"
+              placeholder="请输入法人名称"
             ></el-input>
           </el-form-item>
           <el-form-item
-            prop="bankname"
-            label="开户行"
+            prop="usernameId"
+            label="法人身认证"
           >
             <el-input
-              v-model="bankForm.bankname"
-              placeholder="请输入开户行名称"
-            ></el-input>
-          </el-form-item>
-          <el-form-item
-            prop="address"
-            label="开户行所在地"
-          >
-            <el-input
-              v-model="bankForm.address"
-              placeholder="请输入开户行所在地"
-            ></el-input>
-          </el-form-item>
-          <el-form-item
-            prop="addressName"
-            label="开户行支行名称"
-          >
-            <el-input
-              v-model="bankForm.addressName"
-              placeholder="请输入开户行支行名称"
+              v-model="businessForm.usernameId"
+              placeholder="请输入法人身认证"
             ></el-input>
           </el-form-item>
         </el-form>
@@ -87,7 +65,7 @@
               class="idcar-text"
               v-else
             >
-              上传营业执照原件
+              上传工商营业执照照片
             </div>
           </div>
         </div>
@@ -103,16 +81,10 @@ export default {
   components: { Header },
   data() {
     return {
-      msg: "企业对银行账号认证",
+      msg: "企业工商执照认证",
       icon: "el-icon-arrow-left",
-      bankForm: {},
-      items: [
-        { name: "中国工商银行", id: 1 },
-        { name: "中国建设银行", id: 2 },
-        { name: "中国农业银行", id: 3 },
-        { name: "交通银行", id: 4 }
-      ],
-      img: ""
+      businessForm:{},
+      img:''
     };
   },
   methods: {
