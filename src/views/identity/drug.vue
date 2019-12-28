@@ -7,41 +7,56 @@
     <div class="layout">
       <div class="elmail">
         <el-form
+          :model="drugForm"
+          ref="drugForm"
           class="phoneForm"
-          :model="insureForm"
-          ref="insureForm"
         >
           <el-form-item
-            prop="carnumber"
-            label="保险车牌号"
+            prop="number"
+            label="证书编号"
           >
             <el-input
-              v-model="insureForm.carnumber"
-              placeholder="请输入保险车牌号"
+              v-model="drugForm.number"
+              placeholder="请输入证书编号"
             />
           </el-form-item>
           <el-form-item
-            prop="driver"
-            label="行驶证所有人"
+            prop="name"
+            label="企业名称"
           >
             <el-input
-              v-model="insureForm.driver"
-              placeholder="请输入行驶证所有人姓名"
+              v-model="drugForm.name"
+              placeholder="请输入企业名称"
             />
           </el-form-item>
           <el-form-item
-            prop="driverNumber"
-            label="行驶证号"
+            prop="address"
+            label="注册地址"
           >
             <el-input
-              v-model="insureForm.driverNumber"
-              placeholder="请输入行驶证号"
+              v-model="drugForm.address"
+              placeholder="请输入注册地址"
             />
           </el-form-item>
-          <el-form-item label="保险到期日">
+          <el-form-item
+            prop="limits"
+            label="验收范围"
+          >
+            <el-input
+              v-model="drugForm.limits"
+              placeholder="请输入验收范围"
+            />
+          </el-form-item>
+          <el-form-item label="有效期">
             <el-date-picker
-              v-model="insureForm.date"
-              class="datePicker"
+              v-model="drugForm.start"
+              placeholder="请选择"
+            ></el-date-picker>
+          </el-form-item>
+          <el-form-item label="至">
+            <el-date-picker
+              v-model="drugForm.end"
+              placeholder="请选择"
             ></el-date-picker>
           </el-form-item>
         </el-form>
@@ -62,7 +77,7 @@
               class="idcar-text"
               v-else
             >
-              上传第三方保险金照片
+              上传兽药GMP证书原件
             </div>
           </div>
         </div>
@@ -78,9 +93,9 @@ export default {
   components: { Header },
   data() {
     return {
-      msg: "第三方保险认证",
+      msg: "兽药GMP证书认证",
       icon: "el-icon-arrow-left",
-      insureForm: {},
+      drugForm: {},
       img: ""
     };
   },
@@ -104,3 +119,4 @@ export default {
 
 <style scoped>
 </style>
+

@@ -250,6 +250,86 @@ export default new Router({
       component: () => {
         return import('../views/identity/insure')
       }
+    },
+    //行驶证认证副页
+    {
+      path: '/identity/driver',
+      name: 'driver',
+      component: () => {
+        return import('../views/identity/driver')
+      }
+    },
+    //国内行驶证正页
+    {
+      path: '/identity/driverFace',
+      name: 'driverFace',
+      component: () => {
+        return import('../views/identity/driverFace')
+      }
+    },
+    //交通强险认证
+    {
+      path: '/identity/traffic',
+      name: 'traffic',
+      component: () => {
+        return import('../views/identity/traffic')
+      }
+    },
+    //许可证
+    {
+      path: '/identity/permit',
+      name: 'permit',
+      component: () => {
+        return import('../views/identity/permit')
+      }
+    },
+    //动物免疫合格认证
+    {
+      path: '/identity/zoon',
+      name: 'zoon',
+      component: () => {
+        return import('../views/identity/zoon')
+      }
+    },
+    //饲料生产许可证
+    {
+      path: '/identity/feed',
+      name: 'feed',
+      component: () => {
+        return import('../views/identity/feed')
+      }
+    },
+    //兽药
+    {
+      path: '/identity/drug',
+      name: 'drug',
+      component: () => {
+        return import('../views/identity/drug')
+      }
+    },
+    //兽药检测
+    {
+      path: '/identity/drugtest',
+      name: 'drugtest',
+      component: () => {
+        return import('../views/identity/drugtest')
+      }
+    },
+    //物流公司认证
+    {
+      path: '/identity/logistics',
+      name: 'logistics',
+      component: () => {
+        return import('../views/identity/logistics')
+      }
+    },
+    //企业对银行
+    {
+      path: '/identity/bank',
+      name: 'bank',
+      component: () => {
+        return import('../views/identity/bank')
+      }
     }
   ]
 })

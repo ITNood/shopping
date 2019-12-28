@@ -7,42 +7,68 @@
     <div class="layout">
       <div class="elmail">
         <el-form
+          :model="permitForm"
+          ref="permit"
           class="phoneForm"
-          :model="insureForm"
-          ref="insureForm"
         >
           <el-form-item
-            prop="carnumber"
-            label="保险车牌号"
+            prop="name"
+            label="名称"
           >
             <el-input
-              v-model="insureForm.carnumber"
-              placeholder="请输入保险车牌号"
+              v-model="permitForm.name"
+              placeholder="请输入名称"
             />
           </el-form-item>
           <el-form-item
-            prop="driver"
-            label="行驶证所有人"
+            prop="address"
+            label="地址"
           >
             <el-input
-              v-model="insureForm.driver"
-              placeholder="请输入行驶证所有人姓名"
+              v-model="permitForm.address"
+              placeholder="请输入地址"
             />
           </el-form-item>
           <el-form-item
-            prop="driverNumber"
-            label="行驶证号"
+            prop="number"
+            label="许可证号"
           >
             <el-input
-              v-model="insureForm.driverNumber"
-              placeholder="请输入行驶证号"
+              v-model="permitForm.number"
+              placeholder="请输入许可证号"
             />
           </el-form-item>
-          <el-form-item label="保险到期日">
+          <el-form-item
+            prop="username"
+            label="法定代表人"
+          >
+            <el-input
+              v-model="permitForm.username"
+              placeholder="请输入法定代表人"
+            />
+          </el-form-item>
+          <el-form-item
+            prop="type"
+            label="许可范围"
+          >
+            <el-input
+              v-model="permitForm.type"
+              placeholder="请输入许可范围"
+            />
+          </el-form-item>
+          <el-form-item label="起始日期">
             <el-date-picker
-              v-model="insureForm.date"
-              class="datePicker"
-            ></el-date-picker>
+              v-model="permitForm.start"
+              placeholder="请选择"
+            >
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item label="结束日期">
+            <el-date-picker
+              v-model="permitForm.end"
+              placeholder="请选择"
+            >
+            </el-date-picker>
           </el-form-item>
         </el-form>
       </div>
@@ -62,7 +88,7 @@
               class="idcar-text"
               v-else
             >
-              上传第三方保险金照片
+              上传许可证原件
             </div>
           </div>
         </div>
@@ -78,9 +104,9 @@ export default {
   components: { Header },
   data() {
     return {
-      msg: "第三方保险认证",
+      msg: "许可证认证",
       icon: "el-icon-arrow-left",
-      insureForm: {},
+      permitForm: {},
       img: ""
     };
   },

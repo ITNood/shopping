@@ -77,7 +77,6 @@ export default {
     },
     ajaxData() {
       if (this.password.length >= 6) {
-        let that = that;
         //输完密码后执行操作
         //输完密码之后，这里函数里提交
         
