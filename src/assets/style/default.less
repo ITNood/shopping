@@ -208,6 +208,17 @@ li {
         line-height: 60px;
 
     }
+
+    a {
+        color: @white;
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 0;
+        height: 60px;
+        line-height: 60px;
+
+    }
 }
 
 .title {
@@ -2002,6 +2013,313 @@ li {
     .el-input__inner {
         width: 100%;
     }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: @black;
+    text-align: center;
+    color: @white;
+    line-height: 60px;
+    font-size: 16px;
+    z-index: 999;
+
+    i {
+        color: @white;
+        width: 20px;
+        display: block;
+        line-height: 60px;
+        height: 60px;
+        font-size: 18px;
+        position: absolute;
+        right: 15px;
+        top: 0;
+    }
+
+    .search {
+        right: 45px;
+    }
+}
+
+#chat {
+    i {
+        width: 20px;
+        display: inline-block;
+        line-height: 40px;
+        height: 40px;
+        margin-right: 3px;
+    }
+
+    .el-tabs__header {
+        margin-bottom: 0;
+    }
+
+    .el-tabs__nav {
+        width: 100%;
+
+        .el-tabs__item {
+            width: 33.333%;
+            text-align: center;
+            background: @yellow;
+            color: @white;
+
+            &:last-child {
+                top: -1px;
+                position: relative;
+            }
+        }
+    }
+
+    .el-tabs__active-bar {
+        display: none;
+    }
+
+    .el-tabs__nav-wrap::after {
+        background: transparent;
+    }
+
+
+    .el-tabs__item.is-active {
+        color: @yellow;
+        background: transparent;
+
+        i {
+            color: @yellow;
+        }
+    }
+}
+
+.chatlist {
+    background: @white;
+    padding: 15px;
+
+    a {
+        display: block;
+        border-bottom: 1px solid #DCDFE6;
+        position: relative;
+        padding: 8px 20px 8px 55px;
+        line-height: 35px;
+        margin-bottom: 15px;
+
+        .item {
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 35px;
+        }
+
+        i {
+            position: absolute;
+            right: 0;
+            top: 8px;
+            line-height: 35px;
+            color: @black;
+            text-align: right;
+        }
+    }
+}
+
+.searchInput {
+    .el-input__inner {
+        text-align: center;
+    }
+}
+
+.addCustomer {
+    line-height: 40px;
+    padding: 0 15px;
+    font-size: 14px;
+
+    span {
+        color: @yellow;
+        margin-right: 5px;
+        font-size: 18px;
+    }
+}
+
+.custonerlist {
+    overflow: hidden;
+
+    ul {
+        height: calc(100vh - 200px);
+        overflow-y: auto;
+
+        li {
+            background: @white;
+            padding: 15px;
+            margin-bottom: 1px;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                position: relative;
+                font-size: 14px;
+                color: @black;
+                // &:hover{
+                //     color:@black
+                // }
+
+                img {
+                    width: 35px;
+                    margin-right: 8px;
+                }
+
+                i {
+                    font-size: 16px;
+                    position: absolute;
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+
+.customernewList {
+    margin-top: 5px;
+    background: @white;
+    padding: 15px;
+
+    ul {
+        li {
+            border-bottom: 1px solid @border;
+            margin-bottom: 5px;
+
+            a {
+                color: @black;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                font-size: 14px;
+                line-height: 40px;
+                position: relative;
+
+                i {
+                    position: absolute;
+                    right: 0;
+                    font-size: 16px;
+                }
+
+                p {
+                    width: 60%;
+                    position: absolute;
+                    right: 30px;
+                    text-align: right;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    color: #999;
+                }
+            }
+        }
+    }
+}
+
+.addSearch {
+    width: 80%;
+
+    margin: 0 auto;
+    display: block;
+    position: relative;
+
+    .el-icon-search {
+        left: 0 !important;
+        line-height: 40px !important;
+    }
+
+    .el-input__inner {
+        border-radius: 20px;
+    }
+
+    .el-input {
+
+        .el-input__clear {
+            right: 0 !important;
+        }
+    }
+
+
+}
+
+.finish {
+    position: absolute;
+    right: 15px;
+    color: @white;
+    top: 0;
+}
+
+.addlist {
+    background: @white;
+    padding: 15px;
+
+    .el-checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        border-bottom: 1px solid @border;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        margin-right: 0;
+
+        .el-checkbox__label {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding: 0;
+
+            img {
+                width: 35px;
+                margin: 0 8px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .el-checkbox__input.is-checked+.el-checkbox__label {
+        color: black;
+    }
+}
+
+.bnt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+
+    .el-button {
+        width: 35%;
+        border: none;
+
+        &:first-child {
+            background: #666;
+            color: @white;
+        }
+
+        &:last-child {
+            margin-left: 20px;
+            background: @yellow;
+            color: @white;
+        }
+    }
+}
+
+.root {
+    background: @white;
+    padding: 15px;
+    position: relative;
+    font-size: 14px;
+}
+
+.switch{
+    position: absolute;
+    right: 15px;
+    top: 15px;
 }
 
 /*-------------------------------------------------*/

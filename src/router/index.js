@@ -354,6 +354,79 @@ export default new Router({
       component: () => {
         return import('../views/identity/license')
       }
+    },
+    //消息
+    {
+      path: '/chat/index',
+      name: 'chat',
+      component: () => {
+        return import('../views/chat/index')
+      }
+    },
+    //我的客户
+    {
+      path: '/phone/customer',
+      name: 'customer',
+      component: () => {
+        return import('../views/phone/customer')
+      }
+    },
+    //客户资料
+    {
+      path: '/phone/customerNew',
+      name: 'customerNew',
+      component: () => {
+        return import('../views/phone/customerNew')
+      }
+    },
+    //新建标签
+    {
+      path: '/phone/tags',
+      name: 'tags',
+      component: () => {
+        return import('../views/phone/tags')
+      }
+    },
+
+    //添加
+    {
+      path: '/phone/addCustomer',
+      name: 'addCustomer',
+      component: () => {
+        return import('../views/phone/addCustomer')
+      }
+    },
+    //标签
+    {
+      path: '/phone/label',
+      name: 'label',
+      component: () => {
+        return import('../views/phone/label')
+      }
+    },
+    //用户
+    {
+      path: '/phone/user',
+      name: 'user',
+      component: () => {
+        return import('../views/phone/user')
+      }
+    },
+    //粉丝查看权限
+    {
+      path: '/phone/root',
+      name: '/root',
+      component: () => {
+        return import('../views/phone/root')
+      }
+    },
+    //供应链
+    {
+      path: '/supply/index',
+      name: 'supply',
+      component: () => {
+        return import('../views/supply/index')
+      }
     }
   ]
 })

@@ -14,8 +14,8 @@ export default {
     return {
         items:[
             {url:'/',icon:'icon-cc-home',text:'生活'},
-            {url:'/news',icon:'icon-news',text:'消息'},
-            {url:'/supply',icon:'icon-fenleihuaban',text:'供应链'},
+            {url:'/chat/index',icon:'icon-news',text:'消息'},
+            {url:'/supply/index',icon:'icon-fenleihuaban',text:'供应链'},
             {url:'/telphone',icon:'icon-tongxunlu',text:'通讯录'},
             {url:'/my/index',icon:'icon-wo',text:'我'}
         ]
