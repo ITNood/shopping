@@ -21,7 +21,7 @@
 @border: #f6f6f6;
 
 body {
-    background-color: #f6f6f6;
+    background-color: #f0f0f0;
 }
 
 .el-image {
@@ -2128,6 +2128,16 @@ li {
     }
 }
 
+.join {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+
+    .el-input__inner {
+        border-radius: 20px !important;
+    }
+}
+
 .addCustomer {
     line-height: 40px;
     padding: 0 15px;
@@ -2316,10 +2326,222 @@ li {
     font-size: 14px;
 }
 
-.switch{
+.switch {
     position: absolute;
     right: 15px;
     top: 15px;
+}
+
+.supplier {
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.supplierdetails {
+    margin-top: 20px;
+    min-height: 150px;
+    font-size: 14px;
+}
+
+.detailsList {
+    li {
+        position: relative;
+        background: @white;
+        padding: 0 15px;
+        line-height: 50px;
+        margin-top: 2px;
+        font-size: 14px;
+
+        i {
+            position: absolute;
+            right: 15px;
+            line-height: 50px;
+            font-size: 18px;
+        }
+    }
+}
+
+.textarea {
+    .el-textarea__inner {
+        min-height: 150px !important;
+    }
+}
+
+.mix {
+    background: @white;
+    padding: 15px;
+
+    li {
+        position: relative;
+        padding-left: 45px;
+        border-bottom: 1px solid @border;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 35px;
+
+        img {
+            width: 35px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 35px;
+            overflow: hidden;
+            border-radius: 17px;
+        }
+
+        .el-button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 8px 15px;
+            background: @yellow;
+            color: @white;
+            border: none;
+            line-height: 19px;
+        }
+    }
+}
+
+.chatContent {
+    padding: 15px;
+
+    li {
+        position: relative;
+        margin-bottom: 8px;
+
+        img {
+            width: 35px;
+            position: absolute;
+            top: 0;
+            height: 35px;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        span {
+            background: @white;
+            padding: 5px 12px;
+            border-radius: 3px;
+            margin-top: 3px;
+            line-height: 25px;
+            position: relative;
+            max-width: 70%;
+            word-wrap: break-word;
+            word-break: normal;
+            letter-spacing: 1px;
+
+            i {
+                color: @white;
+                font-size: 18px;
+                top: 3px;
+            }
+        }
+
+        p {
+            display: block;
+        }
+    }
+
+    li.paddingleft {
+        padding-left: 45px;
+        text-align: left;
+
+        img {
+            left: 0;
+        }
+
+        span {
+            float: left;
+
+            i {
+                position: absolute;
+                left: -12px;
+            }
+        }
+    }
+
+    li.paddingright {
+        padding-right: 45px;
+
+        img {
+            right: 0;
+        }
+
+        p {
+            text-align: right;
+        }
+
+        span {
+            float: right;
+
+            i {
+                position: absolute;
+                right: -12px;
+            }
+        }
+    }
+}
+
+.entry {
+    background: @white;
+    height: 50px;
+    padding-left:40px;
+    padding-right: 70px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #dedede;
+
+    .el-input {
+        margin-top: 10px;
+        height: 30px;
+        .el-input__inner{
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+
+    .sendchat {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        line-height: 30px;
+        padding: 0 15px;
+        height: 30px;
+    }
+
+    .addimg {
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 1px solid #DCDFE6;
+        display: block;
+
+        input {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 25px;
+        }
+
+        i {
+            text-align: center;
+            line-height: 25px;
+            width: 25px;
+            font-size: 20px;
+            color: #999;
+        }
+    }
 }
 
 /*-------------------------------------------------*/

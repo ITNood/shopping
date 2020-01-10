@@ -427,6 +427,53 @@ export default new Router({
       component: () => {
         return import('../views/supply/index')
       }
+    },
+    //经销商
+    {
+      path: '/supply/dealer',
+      name: 'dealer',
+      component: () => {
+        return import('../views/supply/dealer')
+      }
+    },
+    //其他单位
+    {
+      path: '/supply/unit',
+      name: 'unit',
+      component: () => {
+        return import('../views/supply/unit')
+      }
+    },
+    //供应商
+    {
+      path: '/supply/supplier',
+      name: 'supplier',
+      component: () => {
+        return import('../views/supply/supplier')
+      }
+    },
+    //发送添加信息
+    {
+      path: '/supply/send',
+      name: 'send',
+      component: () => {
+        return import('../views/supply/send')
+      }
+    },
+    {
+      path: '/supply/join',
+      name: 'join',
+      component: () => {
+        return import('../views/supply/join')
+      }
+    },
+    //聊天
+    {
+      path: '/chat/chat',
+      name: '/wechat',
+      component: () => {
+        return import('../views/chat/chat')
+      }
     }
   ]
 })

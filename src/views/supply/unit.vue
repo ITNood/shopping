@@ -27,9 +27,9 @@ export default {
   data() {
     return {
         icon:'el-icon-arrow-left',
-        msg:'经销商',
+        msg:'其他单位',
         items:[
-            {url:'',img:require('../../assets/image/dealer.png'),text:'经销商'},
+            {url:'',img:require('../../assets/image/add.png'),text:'添加其他单位'},
             {url:'',img:require('../../assets/image/my_5.png'),text:'xx企业'}
         ]
     };
