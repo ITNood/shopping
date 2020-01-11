@@ -2489,7 +2489,7 @@ li {
 .entry {
     background: @white;
     height: 50px;
-    padding-left:40px;
+    padding-left: 40px;
     padding-right: 70px;
     position: fixed;
     bottom: 0;
@@ -2500,7 +2500,8 @@ li {
     .el-input {
         margin-top: 10px;
         height: 30px;
-        .el-input__inner{
+
+        .el-input__inner {
             height: 30px;
             line-height: 30px;
         }
@@ -2541,6 +2542,44 @@ li {
             font-size: 20px;
             color: #999;
         }
+    }
+}
+
+.login {
+    padding: 15px;
+
+    .logintext {
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a,
+        .el-checkbox {
+            width: 33.33%;
+            color: @black;
+            font-size: 14px;
+
+            &:last-child {
+                text-align: right;
+
+            }
+        }
+    }
+}
+
+.mobileCode {
+    position: relative;
+    .el-input__inner{
+        width: 58%;
+    }
+    .getcode{
+        width: 40%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: @yellow;
+        color: @white;
     }
 }
 

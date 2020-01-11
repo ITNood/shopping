@@ -123,13 +123,6 @@ export default new Router({
         return import('../views/life/like')
       }
     },
-    {
-      path: '/life/login',
-      name: 'login',
-      component: () => {
-        return import('../views/life/login')
-      }
-    },
     //我
     {
       path: '/my/index',
@@ -473,6 +466,22 @@ export default new Router({
       name: '/wechat',
       component: () => {
         return import('../views/chat/chat')
+      }
+    },
+    //登录
+    {
+      path: '/login',
+      name: 'login',
+      component: () => {
+        return import('../views/login')
+      }
+    },
+    //忘记密码
+    {
+      path: '/forget',
+      name: 'forget',
+      component: () => {
+        return import('../views/forget')
       }
     }
   ]
