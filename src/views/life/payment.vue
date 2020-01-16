@@ -8,7 +8,7 @@
           @change="selectRadio()"
         >
           <el-radio label="1"><span class="sum aa"></span>余额支付</el-radio>
-          <el-radio label="2"><span class="wechat aa"></span>微信支付</el-radio>
+          <el-radio label="2"><span class="wechat aa"></span>微信支付</el-radio>         
         </el-radio-group>
       </div>
     </div>
@@ -19,8 +19,7 @@
       >支付：<span>￥{{total}}</span></el-col>
       <el-col
         :span="8"
-        class="paySum"
-      ><span @click="pay()">付款</span></el-col>
+        class="paySum"><span @click="pay()">付款</span></el-col>
     </el-row>
     <Pin
       @submit="submit"

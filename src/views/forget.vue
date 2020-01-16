@@ -21,7 +21,7 @@
                      <el-input v-model="forgetForm.confirmpsd" placeholder="请确认密码"></el-input>
                  </el-form-item>
              </el-form>
-             <el-button class="submit">下一步</el-button>
+             <el-button class="submit" @click="next">下一步</el-button>
          </div>
      </div>
  </div>
@@ -37,7 +37,13 @@ export default {
       msg:'忘记密码',
       forgetForm:{}
   }
- }
+ },
+
+ methods: {
+     next(){
+         console.log(this.forgetForm)
+     }
+ },
 }
 </script>
 

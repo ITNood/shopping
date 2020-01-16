@@ -483,6 +483,14 @@ export default new Router({
       component: () => {
         return import('../views/forget')
       }
+    },
+    //我评价的商铺
+    {
+      path: '/life/assess',
+      name: 'assess',
+      component: () => {
+        return import('../views/life/assess')
+      }
     }
   ]
 })

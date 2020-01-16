@@ -218,7 +218,19 @@ li {
         height: 60px;
         line-height: 60px;
 
+        span {
+            font-size: 18px;
+        }
     }
+}
+
+.iconsearch {
+    position: absolute;
+    top: 0;
+    right: 45px;
+    line-height: 60px;
+    font-size: 18px;
+
 }
 
 .title {
@@ -2570,16 +2582,101 @@ li {
 
 .mobileCode {
     position: relative;
-    .el-input__inner{
+
+    .el-input__inner {
         width: 58%;
     }
-    .getcode{
+
+    .getcode {
         width: 40%;
         position: absolute;
         right: 0;
         top: 0;
         background: @yellow;
         color: @white;
+    }
+}
+
+.shopname {
+    background: @yellow;
+    padding: 8px 15px;
+
+    .el-col {
+        font-size: 14px;
+        line-height: 30px;
+
+        .el-checkbox {
+            padding: 0 15px;
+            line-height: 20px;
+            float: right;
+            border-radius: 15px;
+
+            .el-checkbox__input {
+                display: none;
+            }
+
+            .el-checkbox__label {
+                padding: 0;
+                line-height: 28px;
+            }
+        }
+
+
+        .el-checkbox.is-bordered {
+            height: 30px;
+            border-color: @white;
+            background: @white;
+        }
+
+        .el-checkbox__input.is-checked+.el-checkbox__label{
+            color: @black;
+        }
+    }
+}
+
+.shopurl {
+    background: @white;
+
+    a {
+        width: 20%;
+        display: block;
+        color: @black;
+        text-align: center;
+        line-height: 40px;
+        font-size: 14px;
+        float: left;
+    }
+}
+
+.assess {
+    overflow: hidden;
+
+    .assesscontent {
+        height: calc(100vh - 206px);
+        overflow-y: auto;
+        padding: 0 15px;
+
+        .orderAssess {
+            margin-top: 15px;
+
+            ul {
+                li {
+                    margin-bottom: 3px;
+                    background: @white;
+                    padding: 10px;
+                    display: flex;
+                    font-size: 14px;
+
+                    .el-rate {
+                        margin-left: 20px;
+
+                        span {
+                            margin: 0 10px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
