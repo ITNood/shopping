@@ -75,7 +75,7 @@ export default {
           {
             channel: 0, //integer, 支付渠道, 0微信，1支付宝
             orderid: "201601010001", //string(64), 订单号
-            title: "购买VIP会员", //string(128), 订单名称
+            title: "商城购物", //string(128), 订单名称
             amount: this.total //decimal，支付金额（元）
           },
           function(succ) {
